@@ -1,4 +1,5 @@
 import React from 'react';
+import './introduction.css';
 
 const introTitle = '预约项目说明';
 const introEntries = [
@@ -10,21 +11,19 @@ const introEntries = [
 class Introduction extends React.Component {
   render() {
     return (
-      <div className='introduction'>
+      <div className='intro'>
         <p className='intro-title'>{introTitle}</p>
-        <table className='intro-table'>
-          <tbody>
+          <ul className='intro-dot'>
             {introEntries.map((entry, index) => {
               return (
-                <tr key={index}>
-                  <td className='intro-left-td'>·</td>
-                  <td className='intro-right-td'
-                      dangerouslySetInnerHTML={{__html: entry}}></td>
-                </tr>
+                <li
+                  key={index}
+                  className='intro-line'
+                  dangerouslySetInnerHTML={{__html: entry}}
+                ></li>
               );
             })}
-          </tbody>
-        </table>
+          </ul>
       </div>
     );
   }

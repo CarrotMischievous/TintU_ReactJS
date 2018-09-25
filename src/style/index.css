@@ -1,3 +1,8 @@
-.welcome-page {
-  height: 100%;
+body {
+  min-height: 100vh;
+  background: white;
+}
+
+#root, .app {
+  min-height: 100vh;
 }

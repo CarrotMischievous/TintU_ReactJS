@@ -1,11 +1,14 @@
 import React from 'react';
+import './copyright.css';
+import { Checkbox, Button } from 'antd-mobile';
+
+const AgreeItem = Checkbox.AgreeItem;
 
 class CopyRight extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      accepted: false, // 是否接受条款
       disabled: true,  // 预约按钮是否可用
     }
   }
@@ -19,7 +22,6 @@ class CopyRight extends React.Component {
   handleAcceptEntries(event) {
     // 条款是否同意决定是否可以点击按钮
     this.setState({
-      accepted: event.target.checked,
       disabled: !event.target.checked,
     });
   }
@@ -27,15 +29,19 @@ class CopyRight extends React.Component {
   render() {
     return (
       <div className='copyright'>
-        <input className='copyright-checkbox' type='checkbox'
-               checked={this.state.accepted}
-               onChange={this.handleAcceptEntries.bind(this)}/>
-        <span>我同意上述条款</span>
-        <button className='copyright-start'
-                disabled={this.state.disabled}
-                onClick={this.handleStartAppointment.bind(this)}>
-                开始预约
-        </button>
+        <AgreeItem
+          className='agree-checkbox'
+          data-seed="logId"
+          onChange={this.handleAcceptEntries.bind(this)}
+        >我同意上述条款</AgreeItem>
+        <Button
+          size='small'
+          icon='check-circle-o'
+          className='start-appoint'
+          disabled={this.state.disabled}
+          onClick={this.handleStartAppointment.bind(this)}
+        >开始预约
+        </Button>
       </div>
     );
   }

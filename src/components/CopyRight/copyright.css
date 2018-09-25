@@ -1,0 +1,20 @@
+.copyright {
+
+}
+
+.start-appoint {
+  background: #FC8531;
+  width: 50%;
+  margin: auto;
+}
+
+.agree-checkbox {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.am-checkbox.am-checkbox-checked .am-checkbox-inner {
+  background: #FC8531;
+  border-color: #FC8531;
+}

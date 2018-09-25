@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.intro {
+  margin: 1em;
+  margin-top: 0;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #ddd;
+}
+
+.intro-title {
+  font-weight: bolder;
+  margin: 1em;
+}
+
+.intro-dot {
+  padding-left: 2em;
+}
+
+.intro-line {
+  margin: 1em 0;
+  margin-left: .5em;
+}
