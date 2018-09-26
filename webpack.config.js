@@ -93,6 +93,7 @@ module.exports = {
 
 	devServer: {
 		contentBase: resolveApp('build'),
+		historyApiFallback: true,
 		port: 9000,
 	},
 }

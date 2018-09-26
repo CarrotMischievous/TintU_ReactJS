@@ -1,14 +1,16 @@
 .copyright {
-
+  margin: 0.5em;
 }
 
-.start-appoint {
+.copyright-button-appoint {
   background: #FC8531;
   width: 50%;
   margin: auto;
+  margin-top: 1em;
+  margin-bottom: 4em;
 }
 
-.agree-checkbox {
+.copyright-box-agree {
   width: fit-content;
   margin: auto;
   text-align: center;

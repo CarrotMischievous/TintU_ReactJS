@@ -1,14 +1,9 @@
-.middle {
-  text-align: center;
-}
-
-.no-margin {
-  margin: 0;
+.intro-flex {
+  flex-grow: 1;
 }
 
 .welcome-page {
-  min-height: inherit;
+  flex-grow: 1;
   display: flex;
   flex-flow: column;
 }
-

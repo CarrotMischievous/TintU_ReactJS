@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import WelcomePage from './containers/WelcomePage.jsx';
-import './style/index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AppNavBar from "./components/AppNavBar/AppNavBar.jsx";
+import "./style/index.css";
 
 class App extends React.Component {
-	render() {
-		return (
-			<div className="app">
-        <WelcomePage />
-      </div>
-		);
-	}
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/" component={AppNavBar} />
+        </Switch>
+      </Router>
+    );
+  }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
