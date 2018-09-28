@@ -1,13 +1,16 @@
 import React from "react";
 import logo from "../../img/logo.png";
 import { NavBar, Icon, Popover } from "antd-mobile";
-import { Route, withRouter } from "react-router-dom";
-import WelcomePage from "../../containers/WelcomePage.jsx";
-import ServicePage from "../../containers/ServicePage.jsx";
-import "./appnavbar.css";
+import { withRouter } from "react-router-dom";
+import {
+  PAGE_INDEX,
+  PAGE_SELF,
+  PAGE_NOTIF,
+  PAGE_ORDER
+} from "../../routes/pageRoutes.jsx";
+import "./styles/appnavbar.css";
 
 const Item = Popover.Item;
-
 const myImg = src => (
   <img
     src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`}
@@ -15,13 +18,6 @@ const myImg = src => (
     alt=""
   />
 );
-
-const routerSection = [
-  '/',
-  '/service',
-  '/myself',
-  '/notification'
-];
 
 // 界面顶端带有Logo的横条
 class AppNavBar extends React.Component {
@@ -41,7 +37,7 @@ class AppNavBar extends React.Component {
     });
 
     // 路由切换
-    this.props.history.push(routerSection[Number(opt.props.value) - 1]);
+    this.props.history.push(opt.props.value);
   }
 
   handleVisibleChange(visible) {
@@ -52,7 +48,7 @@ class AppNavBar extends React.Component {
 
   render() {
     return (
-      <div className="app">
+      <div className="app-nav-bar">
         <NavBar
           className="logo-nav-bar"
           mode="dark"
@@ -65,28 +61,28 @@ class AppNavBar extends React.Component {
               overlay={[
                 <Item
                   key="1"
-                  value="1"
+                  value={PAGE_INDEX}
                   icon={myImg("tOtXhkIWzwotgGSeptou")}
                 >
                   开始预约
                 </Item>,
                 <Item
                   key="2"
-                  value="2"
+                  value={PAGE_ORDER}
                   icon={myImg("tOtXhkIWzwotgGSeptou")}
                 >
                   我的订单
                 </Item>,
                 <Item
                   key="3"
-                  value="3"
+                  value={PAGE_SELF}
                   icon={myImg("PKAgAqZWJVNwKsAJSmXd")}
                 >
                   个人资料
                 </Item>,
                 <Item
                   key="4"
-                  value="4"
+                  value={PAGE_NOTIF}
                   icon={myImg("uQIYTFeRrjPELImDRrPt")}
                 >
                   拍摄须知
@@ -117,10 +113,8 @@ class AppNavBar extends React.Component {
         </NavBar>
         <div className="logo-head">
           <img src={logo} alt="logo" />
+          <p>欢迎来到TintU影像实验室<br/></p>
         </div>
-
-        <Route exact path="/" component={WelcomePage} />
-        <Route path="/service" component={ServicePage} />
       </div>
     );
   }

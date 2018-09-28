@@ -1,0 +1,8 @@
+.intro-flex {
+  flex-grow: 1;
+}
+
+.welcome-page {
+  display: flex;
+  flex-flow: column;
+}

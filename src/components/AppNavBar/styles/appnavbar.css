@@ -1,0 +1,21 @@
+.logo-nav-bar {
+  background: #FC8531;
+}
+
+.logo-head {
+  margin: 1em;
+}
+
+.logo-head img {
+  display: block;
+  margin: auto;
+}
+
+.logo-head p {
+  text-align: center;
+  margin: 1em;
+}
+
+.left-container {
+  flex-grow: 1;
+}

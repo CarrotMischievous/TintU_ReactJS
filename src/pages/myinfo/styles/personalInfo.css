@@ -1,9 +1,8 @@
-.intro-flex {
+.myinfo-flex {
   flex-grow: 1;
 }
 
-.welcome-page {
-  flex-grow: 1;
+.myinfo-page {
   display: flex;
   flex-flow: column;
 }

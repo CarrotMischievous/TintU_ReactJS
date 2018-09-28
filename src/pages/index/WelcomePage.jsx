@@ -1,8 +1,8 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import Introduction from "../components/Introduction/Introduction.jsx";
-import CopyRight from "../components/CopyRight/CopyRight.jsx";
-import "../style/welcomepage.css";
+import Introduction from "./Introduction.jsx";
+import CopyRight from "./CopyRight.jsx";
+import "./styles/welcomepage.css";
 
 class WelcomePage extends React.Component {
   handleStartAppoinment() {
@@ -11,7 +11,7 @@ class WelcomePage extends React.Component {
 
   render() {
     return (
-      <div className="welcome-page">
+      <div className="left-container welcome-page">
         <Introduction className="intro-flex" />
         <CopyRight onStartAppointment={this.handleStartAppoinment.bind(this)}/>
       </div>

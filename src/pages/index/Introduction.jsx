@@ -1,5 +1,5 @@
 import React from "react";
-import "./introduction.css";
+import "./styles/introduction.css";
 
 const introTitle = "预约项目说明";
 const introEntries = [

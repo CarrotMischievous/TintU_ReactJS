@@ -1,5 +1,5 @@
 import React from "react";
-import "./copyright.css";
+import "./styles/copyright.css";
 import { Checkbox, Button } from "antd-mobile";
 
 const AgreeItem = Checkbox.AgreeItem;
