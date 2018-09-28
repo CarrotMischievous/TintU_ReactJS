@@ -1,5 +1,6 @@
 import React from "react";
 import PersonalInfo from "./PersonalInfo.jsx";
+import AppHeaderWrapper from "../../components/AppHeaderWrapper/AppHeaderWrapper.jsx";
 
 class MyInfoPage extends React.Component {
   render() {
@@ -11,4 +12,4 @@ class MyInfoPage extends React.Component {
   }
 }
 
-export default MyInfoPage;
+export default AppHeaderWrapper(MyInfoPage);

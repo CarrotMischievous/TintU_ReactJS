@@ -8,6 +8,16 @@ const introEntries = [
   "我们会提供精修后的.jpg格式底片，不提供原始拍摄文件<br/>除开个别套餐项目，不提供拍摄原片"
 ];
 
+const IntroLine = (props) => {
+  return (
+    <div className="intro-line">
+      <span className="intro-dot" />
+      <p className="intro-line-content"
+         dangerouslySetInnerHTML={{__html: props.content}}></p>
+    </div>
+  );
+}
+
 class Introduction extends React.Component {
   static defaultProps = {
     className: ""
@@ -17,17 +27,15 @@ class Introduction extends React.Component {
     return (
       <div className={`intro ${this.props.className}`}>
         <p className="intro-title">{introTitle}</p>
-        <ul className="intro-dot">
           {introEntries.map((entry, index) => {
             return (
-              <li
+              <IntroLine
                 key={index}
                 className="intro-line"
-                dangerouslySetInnerHTML={{ __html: entry }}
+                content={entry}
               />
             );
           })}
-        </ul>
       </div>
     );
   }

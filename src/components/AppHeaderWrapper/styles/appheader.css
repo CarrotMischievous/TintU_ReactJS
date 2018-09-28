@@ -1,0 +1,50 @@
+.app-content {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+}
+
+.app-header {
+  margin: 1em;
+  margin-bottom: 0;
+}
+
+.app-header-img {
+  display: block;
+  margin: auto;
+}
+
+.app-header-title {
+  text-align: center;
+  margin: .5em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1.5em;
+}
+
+.app-header-title-exp {
+  font-size: 1em;
+  margin: .75em 0;
+}
+
+.am-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: .5em 0;
+}
+
+.app-header-content {
+  display: inline-block;
+  height: 1em;
+  margin: .5em 0;
+}
+
+.app-header-explain {
+  display: block;
+  font-size: .5em;
+  color: #ddd;
+  width: 100vw;
+}
+

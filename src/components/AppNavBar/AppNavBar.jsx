@@ -1,13 +1,7 @@
 import React from "react";
-import logo from "../../img/logo.png";
 import { NavBar, Icon, Popover } from "antd-mobile";
 import { withRouter } from "react-router-dom";
-import {
-  PAGE_INDEX,
-  PAGE_SELF,
-  PAGE_NOTIF,
-  PAGE_ORDER
-} from "../../routes/pageRoutes.jsx";
+import * as routes from "../../routes/userRoutes.js";
 import "./styles/appnavbar.css";
 
 const Item = Popover.Item;
@@ -18,6 +12,13 @@ const myImg = src => (
     alt=""
   />
 );
+const IconStyle = {
+  height: "100%",
+  padding: "0 15px",
+  marginRight: "-15px",
+  display: "flex",
+  alignItems: "center"
+};
 
 // 界面顶端带有Logo的横条
 class AppNavBar extends React.Component {
@@ -61,28 +62,28 @@ class AppNavBar extends React.Component {
               overlay={[
                 <Item
                   key="1"
-                  value={PAGE_INDEX}
+                  value={routes.PAGE_INDEX}
                   icon={myImg("tOtXhkIWzwotgGSeptou")}
                 >
                   开始预约
                 </Item>,
                 <Item
                   key="2"
-                  value={PAGE_ORDER}
+                  value={routes.PAGE_ORDER}
                   icon={myImg("tOtXhkIWzwotgGSeptou")}
                 >
                   我的订单
                 </Item>,
                 <Item
                   key="3"
-                  value={PAGE_SELF}
+                  value={routes.PAGE_SELF}
                   icon={myImg("PKAgAqZWJVNwKsAJSmXd")}
                 >
                   个人资料
                 </Item>,
                 <Item
                   key="4"
-                  value={PAGE_NOTIF}
+                  value={routes.PAGE_NOTIF}
                   icon={myImg("uQIYTFeRrjPELImDRrPt")}
                 >
                   拍摄须知
@@ -95,15 +96,7 @@ class AppNavBar extends React.Component {
               onVisibleChange={this.handleVisibleChange.bind(this)}
               onSelect={this.onSelect.bind(this)}
             >
-              <div
-                style={{
-                  height: "100%",
-                  padding: "0 15px",
-                  marginRight: "-15px",
-                  display: "flex",
-                  alignItems: "center"
-                }}
-              >
+              <div style={IconStyle}>
                 <Icon type="ellipsis" />
               </div>
             </Popover>
@@ -111,10 +104,6 @@ class AppNavBar extends React.Component {
         >
           TintU影像实验室
         </NavBar>
-        <div className="logo-head">
-          <img src={logo} alt="logo" />
-          <p>欢迎来到TintU影像实验室<br/></p>
-        </div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import AppHeaderWrapper from "../../components/AppHeaderWrapper/AppHeaderWrapper.jsx";
 
 class ServicePage extends React.Component {
   render() {
@@ -6,4 +7,4 @@ class ServicePage extends React.Component {
   }
 }
 
-export default ServicePage;
+export default AppHeaderWrapper(ServicePage);

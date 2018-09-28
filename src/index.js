@@ -2,15 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import AppNavBar from "./components/AppNavBar/AppNavBar.jsx";
+import PageRoute from "./components/UserRoute/PageRoute.jsx";
 import "./index.css";
-import {
-  PAGE_INDEX,
-  PAGE_SERVE,
-  PAGE_SELF,
-  PAGE_NOTIF,
-  PAGE_ORDER,
-  PageRoute
-} from "./routes/pageRoutes.jsx";
+import * as routes from "./routes/userRoutes.js";
 
 class App extends React.Component {
   render() {
@@ -18,11 +12,11 @@ class App extends React.Component {
       <div className='app'>
         <Route path="/" component={AppNavBar} />
         <Switch>
-          <PageRoute path={PAGE_INDEX} />
-          <PageRoute path={PAGE_SERVE} />
-          <PageRoute path={PAGE_SELF} />
-          <PageRoute path={PAGE_NOTIF} />
-          <PageRoute path={PAGE_ORDER} />
+          <PageRoute path={routes.PAGE_INDEX} />
+          <PageRoute path={routes.PAGE_SERVE} />
+          <PageRoute path={routes.PAGE_SELF} />
+          <PageRoute path={routes.PAGE_NOTIF} />
+          <PageRoute path={routes.PAGE_ORDER} />
           <Redirect exact path="/" to="/index" />
         </Switch>
       </div>
