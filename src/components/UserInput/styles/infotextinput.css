@@ -1,0 +1,12 @@
+.info-text-input {
+  
+}
+
+.itext-input {
+  height: 2em;
+  width: 90%;
+  border-radius: 0.25em;
+  border-color: #FC8531;
+  border-style: solid;
+  padding: 0.5em;
+}

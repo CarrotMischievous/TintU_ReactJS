@@ -1,5 +1,6 @@
 .copyright {
   margin: 0.5em;
+  border-top: 1px solid #ddd;
 }
 
 .copyright-button-appoint {
@@ -7,16 +8,12 @@
   width: 50%;
   margin: auto;
   margin-top: 1em;
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 
 .copyright-box-agree {
   width: fit-content;
   margin: auto;
+  margin-top: 1.5em;
   text-align: center;
-}
-
-.am-checkbox.am-checkbox-checked .am-checkbox-inner {
-  background: #FC8531;
-  border-color: #FC8531;
 }

@@ -12,3 +12,38 @@ body {
   display: flex;
   flex-flow: column;
 }
+
+.flex-container {
+  flex-grow: 1;
+}
+
+// Antd Checkbox组件优化
+.am-checkbox.am-checkbox-checked .am-checkbox-inner {
+  background: #FC8531;
+  border-color: #FC8531;
+}
+
+.am-checkbox-agree .am-checkbox-inner {
+  top: .5em;
+}
+
+.am-checkbox-agree .am-checkbox-agree-label {
+  font-size: inherit;
+  line-height: 1.5em;
+  margin-left: 2em;
+  margin-top: 0;
+}
+
+.am-checkbox-agree .am-checkbox {
+  width: 2em;
+}
+
+.am-checkbox-inner {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.am-checkbox-agree {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}

@@ -1,8 +1,4 @@
-.myinfo-flex {
-  flex-grow: 1;
-}
-
-.myinfo-page {
+.person-infos {
   display: flex;
-  flex-flow: column;
+  flex-wrap: wrap;
 }
