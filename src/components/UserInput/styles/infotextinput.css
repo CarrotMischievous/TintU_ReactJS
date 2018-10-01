@@ -1,12 +1,57 @@
-.info-text-input {
-  
-}
-
 .itext-input {
-  height: 2em;
-  width: 90%;
+  line-height: 2em;
+  width: 100%;
   border-radius: 0.25em;
   border-color: #FC8531;
   border-style: solid;
-  padding: 0.5em;
+  padding: .5em;
+  padding-right: 2em;
+  box-sizing: border-box;
+}
+
+.itext-input-hidden {
+  padding-right: .5em
+}
+
+.itext-input-withclear {
+  padding-left: .5em + .5em;
+}
+
+.itext-inputclear {
+  position: relative;
+}
+
+.itext-clear {
+  position: absolute;
+  top: calc((3em + 4px - 1.5em) / 2);
+  left: calc(100% - 1.5em - .5em);
+  width: 4.5em;
+  height: 4.5em;
+  border-radius: 50%;
+  background-color: #ccc;
+  transform: scale(calc(1/3));
+  transform-origin: 0 0;
+}
+
+.itext-clear-hidden {
+  display: none;
+}
+
+.itext-clear::before, .itext-clear::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: calc((100% - .2em) / 2);
+  height: .2em;
+  background: #ffffff;
+}
+
+.itext-clear::before {
+  transform: rotate(45deg);
+}
+
+.itext-clear::after {
+  transform: rotate(-45deg);
 }

@@ -4,10 +4,8 @@ import "./styles/infoblocker.css";
 const InfoBlocker = (InfoComponent) => {
   return class InfoBlock extends React.Component {
     render() {
-      const contentSize = this.props.size ? 
-                      `info-block-${this.props.size}` : "";
       return (
-        <div className={`info-block ${contentSize}`}>
+        <div className="info-block" style={this.props.definedStyle}>
           <span className="iblock-title">{`*${this.props.title || ""}`}</span>
           <InfoComponent {...this.props} />
         </div>

@@ -25,7 +25,7 @@
 
 .app-header-title-exp {
   font-size: 1em;
-  margin: .75em 0;
+  margin: calc(.75em - 1px) 0;
 }
 
 .am-icon {
@@ -43,7 +43,7 @@
 
 .app-header-explain {
   display: block;
-  font-size: .5em;
+  font-size: 1em;
   color: #ddd;
   width: 100vw;
 }

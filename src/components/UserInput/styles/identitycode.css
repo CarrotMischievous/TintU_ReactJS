@@ -1,0 +1,21 @@
+.identity-code {
+  display: flex;
+}
+
+.identity-button {
+  width: 35%;
+  height: calc(3em + 4px);
+  line-height: calc(3em + 4px - 1px);
+  background-color: #FC8531;
+  color: white;
+  transform: translateX(-2px);
+  font-size: 1em;
+}
+
+.identity-button span {
+  font-size: 1em;
+}
+
+.identity-phone {
+  width: 65%;
+}

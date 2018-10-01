@@ -1,0 +1,26 @@
+.app-footer {
+  display: flex;
+  align-content: flex-end;
+  justify-content: center;
+  padding: 1em;
+  padding-top: 1.5em;
+  border-top: 1px solid #ddd;
+}
+
+.app-footer-button {
+  font-size: 1em;
+  height: 3em;
+  line-height: 3em;
+  background-color: #FC8531;
+  color: white;
+}
+
+.app-footer-button:first-child:nth-last-child(2),
+.app-footer-button:first-child:nth-last-child(2) ~ a {
+  margin: 0 5%;
+  width: 40%;
+}
+
+.app-footer-button:first-child:nth-last-child(1) {
+  width: 50%;
+}

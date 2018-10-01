@@ -1,4 +1,6 @@
 .myinfo-page {
   margin: 1em;
   border-top: 1px solid #ddd;
+  display: flex;
+  flex-flow: column;
 }

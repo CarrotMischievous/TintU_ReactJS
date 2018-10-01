@@ -4,16 +4,7 @@
   flex-shrink: 0;
 }
 
-.info-block-small {
-  width: 50%;
-}
-
-.info-block-large {
-  width: 100%;
-}
-
 .iblock-title {
   display: block;
-  font-size: .5em;
   padding: .25em 0;
 }

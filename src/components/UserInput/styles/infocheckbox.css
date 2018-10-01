@@ -1,5 +1,4 @@
 .info-checkbox {
-  font-size: .5em;
   display: flex;
-  margin: calc((3.25em - (1.15em + 1em)) / 2) 0;
+  margin: calc((3em + 4px - 2.25em * 1.15) / 2) 0;
 }
