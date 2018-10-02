@@ -21,5 +21,5 @@ export default function PageRoute(props) {
   let routePath = props.path;
   routePath = props.matchUrl ? `${props.matchUrl}${routePath}` : `${routePath}`;
 
-  return <Route path={routePath} component={pagePaths[routePath]} />;
+  return <Route exact={props.exact || false} path={routePath} component={pagePaths[routePath]} />;
 }

@@ -17,12 +17,12 @@ class App extends React.Component {
         <div className='app'>
           <PageRoute path={routes.PAGE_ROOT} />
           <Switch>
-            <PageRoute path={routes.PAGE_INDEX} />
+            <PageRoute exact path={routes.PAGE_INDEX} />
             <PageRoute path={routes.PAGE_SERVE} />
             <PageRoute path={routes.PAGE_SELF} />
             <PageRoute path={routes.PAGE_NOTIF} />
             <PageRoute path={routes.PAGE_ORDER} />
-            <Redirect exact path="/" to="/index" />
+            <Redirect exact path="/" to="/tintu" />
           </Switch>
         </div>
       </Provider>

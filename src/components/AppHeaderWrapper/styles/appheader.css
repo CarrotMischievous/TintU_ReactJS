@@ -28,7 +28,7 @@
   margin: calc(.75em - 1px) 0;
 }
 
-.am-icon {
+.app-header-title .am-icon {
   display: inline-block;
   width: 1em;
   height: 1em;

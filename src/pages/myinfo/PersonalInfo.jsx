@@ -9,6 +9,11 @@ import * as Actions from "../../store/actions.js";
 import "./styles/personalInfo.css";
 
 class PersonalInfo extends React.Component {
+  // 组件刷新需要获取Server端的用户信息
+  componentWillMount() {
+    
+  }
+
   // 姓名感知
   handleUserNameChange(name) {
     if (this.props.updateUserName) {

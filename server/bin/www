@@ -1,0 +1,79 @@
+#!/usr/bin/env node
+
+/* 依赖加载 */
+const http = require("http");
+const debug = require("debug")('tintu-server');
+const app = require("../app.js");
+const { configParser, SERVER_BASE } = require("../config/configParser.js");
+
+/* 基础常量 */
+const BASE_PORT = "3000";
+
+/* 端口配置 */
+const serverBaseConfig = configParser(SERVER_BASE);
+const port = normalizePort(serverBaseConfig.port);
+app.set("port", port);
+
+/* 创建服务，监听端口 */
+const server = http.createServer(app);
+
+/* Server 事件处理，目前简单不分流 */
+server.listen(port);
+server.on("error", onError);
+server.on('listening', onListening);
+
+
+/* ----------------- 
+   内部处理函数 */
+
+/*
+ * 格式化端口
+ */
+function normalizePort(configVal) {
+  let port = configVal || BASE_PORT;
+  port = parseInt(configVal);
+
+  if (isNaN(port)) {
+    return parseInt(BASE_PORT);
+  }
+
+  return port;
+}
+
+/**
+ * HTTP Server的错误处理事件
+ */
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  const bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * HTTP Server的端口监听事件
+ */
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
