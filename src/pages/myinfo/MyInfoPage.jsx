@@ -16,7 +16,7 @@ class MyInfoPage extends React.Component {
   }
 
   render() {
-    //console.log(this.props.personInfo);
+    console.log(this.props.personInfo);
     return (
       <div className="flex-container myinfo-page">
         <PersonalInfo className='myinfo-flex' />

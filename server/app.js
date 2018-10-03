@@ -11,39 +11,43 @@ const appRouter = express.Router();
 
 // 定义favicon
 
-
 // 定义数据解析器
-
 
 // 定义静态文件目录
 app.use("/static", express.static(path.join(__dirname, "../build/static")));
+
+// 跨越支持
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 // 匹配路径
 app.use("/", router);
 
 // 404处理
 app.use((req, res, next) => {
-    res.status(404).send("Sorry can't find that!");
+  res.status(404).send("Sorry can't find that!");
 });
 
 // 开发环境，500错误处理和错误堆栈跟踪
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+if (app.get("env") === "development") {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render("error", {
+      message: err.message,
+      error: err
     });
+  });
 }
 
 // 生产环境，500错误处理
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    }); 
+  res.status(err.status || 500);
+  res.send({
+    message: err.message,
+    error: {}
+  });
 });
 
 // 输出模型app

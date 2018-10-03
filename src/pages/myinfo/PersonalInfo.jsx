@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
+import fetch from "node-fetch";
 import InfoTextInput from "../../components/UserInput/InfoTextInput.jsx";
 import IdentityCode from "../../components/UserInput/IdentityCode.jsx";
 import InfoCheckBox from "../../components/UserInput/InfoCheckBox.jsx";
@@ -8,10 +9,37 @@ import { helpGeneraStyle, helpGetWidthByPer } from "../../helper/cssStyles.js";
 import * as Actions from "../../store/actions.js";
 import "./styles/personalInfo.css";
 
+const getPersonInfoUrl = "http://localhost:9001/personInfo/user/18512542541";
+
 class PersonalInfo extends React.Component {
   // 组件刷新需要获取Server端的用户信息
   componentWillMount() {
-    
+    let errorState = false;
+
+    fetch(getPersonInfoUrl, {
+      method: 'GET',
+    }).then((response) => {
+      if(200 !== response.status){
+        errorState = true;
+      }
+      return response.json();
+    }).then((data) => {
+      if(errorState){
+        console.log("存在一个问题：" + data.error);
+        return;
+      }
+      console.log("data", data);
+      this.handleServerData.apply(this, data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  // 从Server获取数据通过redux刷新
+  handleServerData(user) {
+    this.handleUserNameChange(user.name);
+    this.handleCheckBoxSelected(user.sex);
+    this.handleUserTelephoneChange(user.phone);
   }
 
   // 姓名感知
