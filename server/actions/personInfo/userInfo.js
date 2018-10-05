@@ -9,7 +9,7 @@ const get = (req, res) => {
     //console.log(req.url, data);
     if (err) {
       res.status(404).send({
-        error: "No data matched in user.",
+        error: err.code,
       });
       return;
     }

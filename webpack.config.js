@@ -52,7 +52,7 @@ module.exports = {
 						test: /\.(png|svg|jpg|gif)/,
 						use: [
 							{
-								loader: 'file-loader',
+								loader: 'url-loader',
 								options: {
 									limit: 10000,
 									name: 'static/media/[name].[hash:8].[ext]',

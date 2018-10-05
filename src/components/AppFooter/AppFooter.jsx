@@ -7,7 +7,7 @@ const preCls = "app-footer";
 
 class AppFooter extends React.Component {
   handleItemButtonClicked(index) {
-    const handler = this.props.content[index].onItemClicked;
+    const handler = this.props.footerConf.items[index].onItemClicked;
 
     if (handler) {
       handler();
@@ -17,19 +17,21 @@ class AppFooter extends React.Component {
   render() {
     return (
       <div className={`${preCls}`}>
-        {this.props.content.map((item, index) => {
-          return (
-            <Button
-              key={index}
-              className={`${preCls}-button`}
-              style={item.style || {}}
-              disabled={false}
-              onClick={this.handleItemButtonClicked.bind(this, index)}
-            >
-              {item.title}
-            </Button>
-          );
-        })}
+        <div className={`${preCls}-inner`}>
+          {(this.props.footerConf.items || []).map((item, index) => {
+            return (
+              <Button
+                key={index}
+                className={`${preCls}-button`}
+                style={item.style || {}}
+                disabled={false}
+                onClick={this.handleItemButtonClicked.bind(this, index)}
+              >
+                {item.title}
+              </Button>
+            );
+          })}
+        </div>
       </div>
     );
   }

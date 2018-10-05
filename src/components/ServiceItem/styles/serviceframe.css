@@ -1,0 +1,16 @@
+.service-item-frame {
+  margin: 1em; 
+}
+
+.ser-frame-title {
+  display: block;
+  margin: .5em 0;
+  font-weight: bold;
+}
+
+.ser-frame-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+}

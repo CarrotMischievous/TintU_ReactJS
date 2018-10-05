@@ -1,0 +1,32 @@
+.service-item {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 1em;
+  height: calc(3.5em + 2px);
+  margin-top: 1em;
+  width: 45%;
+}
+
+.ser-item-imgframe {
+  display: inline-flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 3.5em;
+  height: 3.5em;
+  background: white;
+  margin: 1px;
+  border-radius: 1em;
+}
+
+.ser-item-img {
+  display: block;
+  margin: auto;
+  height: calc(3.5em - 2px - .3em);
+}
+
+.ser-item-title {
+  display: inline-block;
+  margin: auto;
+}

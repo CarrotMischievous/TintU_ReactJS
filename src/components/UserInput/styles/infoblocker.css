@@ -6,5 +6,6 @@
 
 .iblock-title {
   display: block;
+  font-weight: bold;
   padding: .25em 0;
 }

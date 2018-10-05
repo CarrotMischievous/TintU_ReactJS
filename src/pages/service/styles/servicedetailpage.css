@@ -1,0 +1,71 @@
+.service-detail-page {
+  color: #777;
+}
+
+.ser-detail-brief {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  height: 6em;
+}
+
+.ser-detail-img-frame {
+  display: inline-block;
+  width: 5em;
+  height: 6em;
+  text-align: center;
+}
+
+.ser-detail-img-frame span {
+  font-weight: bold;
+}
+
+.ser-detail-img-wrapper {
+  width: 5em;
+  height: 5em;
+  border: 5px solid;
+  border-radius: .5em;
+  box-sizing: border-box;
+}
+
+.ser-detail-img-wrapper img {
+  display: block;
+  margin: auto;
+  height: calc(5em - 5px * 2);
+}
+
+.ser-detail-brief-price {
+  display: block;
+  flex-grow: 1;
+  font-size: 2em;
+  height: 1.5em;
+  margin: auto;
+  text-align: center;
+}
+
+.ser-detail-brief-store {
+  height: 1em;
+  align-self: flex-end;
+}
+
+.ser-detail-items {
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 1em;
+}
+
+.ser-detail-items-title {
+  font-weight: bold;
+}
+
+.ser-detail-items-equipment {
+  border-bottom: 1px solid #ddd;
+}
+
+.ser-detail-items-apply {
+  border-bottom: 1px solid #ddd;
+}
+
+.ser-detail-items-description {
+
+}

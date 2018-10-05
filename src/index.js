@@ -18,10 +18,11 @@ class App extends React.Component {
           <PageRoute path={routes.PAGE_ROOT} />
           <Switch>
             <PageRoute exact path={routes.PAGE_INDEX} />
-            <PageRoute path={routes.PAGE_SERVE} />
-            <PageRoute path={routes.PAGE_SELF} />
-            <PageRoute path={routes.PAGE_NOTIF} />
-            <PageRoute path={routes.PAGE_ORDER} />
+            <PageRoute exact path={routes.PAGE_SERVE} />
+            <PageRoute exact path={routes.PAGE_PRODUCT} />
+            <PageRoute exact path={routes.PAGE_SELF} />
+            <PageRoute exact path={routes.PAGE_NOTIF} />
+            <PageRoute exact path={routes.PAGE_ORDER} />
             <Redirect exact path="/" to="/tintu" />
           </Switch>
         </div>

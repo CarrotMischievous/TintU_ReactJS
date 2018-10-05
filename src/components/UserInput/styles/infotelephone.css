@@ -1,8 +1,8 @@
-.identity-code {
+.telephone {
   display: flex;
 }
 
-.identity-button {
+.telephone-apply-button {
   width: 35%;
   height: calc(3em + 4px);
   line-height: calc(3em + 4px - 1px);
@@ -12,10 +12,10 @@
   font-size: 1em;
 }
 
-.identity-button span {
+.telephone-apply-button span {
   font-size: 1em;
 }
 
-.identity-phone {
+.telephone-input {
   width: 65%;
 }

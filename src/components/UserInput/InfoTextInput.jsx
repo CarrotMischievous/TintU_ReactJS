@@ -1,15 +1,16 @@
 import React from "react";
-import "./styles/infotextinput.css";
-import InfoBlocker from "./InfoBlocker.jsx";
 import PropTypes from "prop-types";
+import InfoBlocker from "./InfoBlocker.jsx";
+import "./styles/infotextinput.css";
 
 class InfoTextInput extends React.Component {
   constructor(props) {
     super(props);
 
+    //console.log("textInput:", this.props);
     this.state = {
-      userText: "",
-      textFocus: false
+      textFocus: false,
+      clearFocus: false, /* 置位后表示当前Blur由clear导致，不失焦 */
     };
   }
 
@@ -20,10 +21,6 @@ class InfoTextInput extends React.Component {
       }
     }
 
-    this.setState({
-      userText: event.target.value
-    });
-
     if (this.props.onTextChanged) {
       this.props.onTextChanged(event.target.value);
     }
@@ -31,42 +28,47 @@ class InfoTextInput extends React.Component {
 
   handleTextInputFocus() {
     this.setState({
-      textFocus: true,
-    })
-  }
-
-  handleTextInputBlur() {
-    this.setState({
-      textFocus: false,
-    })
-  }
-
-  handleClearText() {
-    this.setState({
-      userText: ""
+      textFocus: true
     });
-    
-    if (this.props.onTextChanged) {
-      this.props.onTextChanged("");
+  }
+
+  handleTextInputBlur(event) {
+    this.setState({
+      textFocus: false
+    });
+  }
+
+  handleClearText(event) {
+    const textContent = (this.props.text && this.props.text[0]) || "";
+
+    /* 值不为空清0才有效 */
+    if (textContent) {
+      if (this.props.onTextChanged) {
+        this.props.onTextChanged("");
+      }
     }
   }
 
   render() {
-    const hidden =
-      "" !== this.state.userText && this.state.textFocus ? "" : "-hidden";
+    const textContent = (this.props.text && this.props.text[0]) || "";
+    const hidden = this.state.textFocus ? "" : "-hidden";
 
     return (
       <div className="itext-inputclear">
         <input
+          ref={(input) => this.textInput = input}
           className={`itext-input itext-input${hidden}`}
           onChange={this.handleInfoTextInput.bind(this)}
-          onBlur={this.handleTextInputBlur.bind(this)}
           onFocus={this.handleTextInputFocus.bind(this)}
-          value={this.state.userText}
+          onBlur={this.handleTextInputBlur.bind(this)}
+          value={textContent}
+          placeholder={this.props.placeholder || ""}
         />
         <div
-          className={`itext-clear${hidden}`}
-          onTouchEnd={this.handleClearText.bind(this)} />
+          className={`itext-clear-wrapper${hidden}`}
+          onTouchEnd={this.handleClearText.bind(this)}>
+          <div className={`itext-clear${hidden}`} />
+        </div>
       </div>
     );
   }
@@ -74,7 +76,7 @@ class InfoTextInput extends React.Component {
 
 InfoTextInput.propTypes = {
   onTextChanged: PropTypes.func,
-  textCheck: PropTypes.func,
+  textCheck: PropTypes.func
 };
 
 // 导入基础TextInput，不封装Wrapper

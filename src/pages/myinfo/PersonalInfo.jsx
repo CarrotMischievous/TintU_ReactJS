@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import fetch from "node-fetch";
 import InfoTextInput from "../../components/UserInput/InfoTextInput.jsx";
-import IdentityCode from "../../components/UserInput/IdentityCode.jsx";
+import InfoTelephone from "../../components/UserInput/InfoTelephone.jsx";
 import InfoCheckBox from "../../components/UserInput/InfoCheckBox.jsx";
+import InfoVerificationCode from "../../components/UserInput/InfoVerificationCode.jsx";
 import { helpGeneraStyle, helpGetWidthByPer } from "../../helper/cssStyles.js";
 import * as Actions from "../../store/actions.js";
 import "./styles/personalInfo.css";
 
-const getPersonInfoUrl = "http://localhost:9001/personInfo/user/18512542541";
+const getPersonInfoUrl = "http://192.168.0.176:9001/personInfo/user/18512542541";
 
 class PersonalInfo extends React.Component {
   // 组件刷新需要获取Server端的用户信息
@@ -28,7 +29,7 @@ class PersonalInfo extends React.Component {
         console.log("存在一个问题：" + data.error);
         return;
       }
-      console.log("data", data);
+      //console.log("data", data);
       this.handleServerData.apply(this, data);
     }).catch((err) => {
       console.log(err);
@@ -39,6 +40,7 @@ class PersonalInfo extends React.Component {
   handleServerData(user) {
     this.handleUserNameChange(user.name);
     this.handleCheckBoxSelected(user.sex);
+    this.handleUserEmailChange(user.email);
     this.handleUserTelephoneChange(user.phone);
   }
 
@@ -71,14 +73,14 @@ class PersonalInfo extends React.Component {
   }
 
   // 验证码申请
-  handleIdentityCodeApply() {
+  handleVCodeApply() {
     if (this.props.applyVeriCode) {
       this.props.applyVeriCode(true);
     }
   }
 
   // 验证码感知
-  handleIdentityCodeChange(vCode) {
+  handleVerificationCodeChange(vCode) {
     if (this.props.updateVCode) {
       this.props.updateVCode(vCode);
     }
@@ -94,11 +96,17 @@ class PersonalInfo extends React.Component {
         <InfoTextInput
           definedStyle={helpGetWidthByPer("50%")}
           title="你的名字"
+          content={[
+            "userName"
+          ]}
           onTextChanged={this.handleUserNameChange.bind(this)}
         />
         <InfoCheckBox
           definedStyle={helpGetWidthByPer("50%")}
           title="你的性别"
+          content={[
+            "userSex"
+          ]}
           leftCheck={{
             title: "女士"
           }}
@@ -107,19 +115,28 @@ class PersonalInfo extends React.Component {
           }}
           onItemSelected={this.handleCheckBoxSelected.bind(this)}
         />
-        <IdentityCode
+        <InfoTelephone
           definedStyle={helpGetWidthByPer("70%")}
           title="你的手机号"
-          onIdentityCodeApply={this.handleIdentityCodeApply.bind(this)}
+          content={[
+            "userPhone"
+          ]}
+          onIdentityCodeApply={this.handleVCodeApply.bind(this)}
           onTextChanged={this.handleUserTelephoneChange.bind(this)} />
-        <InfoTextInput
+        <InfoVerificationCode
           definedStyle={helpGeneraStyle(helpGetWidthByPer("30%"), noneStyle)}
           title="验证码"
-          onTextChanged={this.handleIdentityCodeChange.bind(this)}
+          content={[
+            "verificationCode"
+          ]}
+          onTextChanged={this.handleVerificationCodeChange.bind(this)}
         />
         <InfoTextInput
           definedStyle={helpGetWidthByPer("100%")}
           title="你的邮箱"
+          content={[
+            "userEmail"
+          ]}
           onTextChanged={this.handleUserEmailChange.bind(this)}
         />
       </div>

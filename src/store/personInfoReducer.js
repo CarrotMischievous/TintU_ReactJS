@@ -6,14 +6,13 @@ import {
   UPDATE_USERPHONE,
   UPDATE_VERIFICATIONCODE,
 } from "./actions.js";
-import { CBOX_NONE } from "../helper/constants.js";
 
 // 这里state是主state的一项属性
 export default function (state, action) {
   // 初始化
   if (!state) {
     state = {
-      userSex: CBOX_NONE,
+      userSex: 0,
       userName: "",
       userEmail: "",
       userPhone: "",

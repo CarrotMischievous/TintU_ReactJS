@@ -1,3 +1,12 @@
 .logo-nav-bar {
   background: #FC8531;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 3.5em;
+}
+
+.app-nav-bar {
+  height: 3.5em;
 }

@@ -1,4 +1,5 @@
 const mysql  = require('mysql');
+const dbDebug = require("debug")("table_user");
 
 const connection = mysql.createConnection({
   host    : '127.0.0.1',
@@ -10,7 +11,11 @@ const connection = mysql.createConnection({
 
 class User {
   constructor() {
-    connection.connect();
+    connection.connect((err) => {
+      if(err) {
+        dbDebug(err.code, err.sqlMessage);
+      }
+    });
   }
 
   add(queryParam, resCallBack) {

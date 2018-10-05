@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/identitycode.css";
+import "./styles/infotelephone.css";
 import InfoBlocker from "./InfoBlocker.jsx";
 import { SimpleInfoTextInput } from "./InfoTextInput.jsx";
 import { Button } from "antd-mobile";
@@ -7,12 +7,11 @@ import PropTypes from "prop-types";
 
 const PHONE_LENGTH = 11;
 
-class IdentityCode extends React.Component {
+class InfoTelephone extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userTelephone: "",
       isPhoneInvalid: false,
     }
   }
@@ -33,10 +32,6 @@ class IdentityCode extends React.Component {
   }
 
   handleTelephoneChange(text) {
-    this.setState({
-      userTelephone: text,
-    });
-
     if (this.props.onTextChanged) {
       this.props.onTextChanged(text);
     }
@@ -55,14 +50,15 @@ class IdentityCode extends React.Component {
 
   render() {
     return (
-      <div className="identity-code">
-        <div className="identity-phone">
+      <div className="telephone">
+        <div className="telephone-input">
           <SimpleInfoTextInput
+            text={this.props.text}
             onTextChanged={this.handleTelephoneChange.bind(this)}
             textCheck={this.telephoneTextCheck.bind(this)} />
         </div>
         <Button
-          className="identity-button"
+          className="telephone-apply-button"
           onClick={this.handleGetIdentityCode.bind(this)}
           disabled={!this.state.isPhoneInvalid}
         >
@@ -73,9 +69,9 @@ class IdentityCode extends React.Component {
   }
 }
 
-IdentityCode.propTypes = {
+InfoTelephone.propTypes = {
   onTextChanged: PropTypes.func,
   onIdentityCodeApply: PropTypes.func,
 }
 
-export default InfoBlocker(IdentityCode);
+export default InfoBlocker(InfoTelephone);

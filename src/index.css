@@ -13,11 +13,18 @@ body {
   flex-flow: column;
 }
 
+/* page必须满足flex可延展 */
 .flex-container {
   flex-grow: 1;
 }
 
-// Antd Checkbox组件优化
+/* appcontent对应的margin样式 */
+.page-frame {
+  margin: 1em;
+  margin-top: 0;
+}
+
+/* Antd Checkbox组件优化 */
 .am-checkbox.am-checkbox-checked .am-checkbox-inner {
   background: #FC8531;
   border-color: #FC8531;

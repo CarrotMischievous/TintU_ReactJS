@@ -7,30 +7,36 @@
   padding: .5em;
   padding-right: 2em;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .itext-input-hidden {
-  padding-right: .5em
-}
-
-.itext-input-withclear {
-  padding-left: .5em + .5em;
+  padding-right: .5em;
+  border-color: rgba(252, 133, 49, 0.5);
 }
 
 .itext-inputclear {
   position: relative;
 }
 
-.itext-clear {
+.itext-clear-wrapper {
   position: absolute;
-  top: calc((3em + 4px - 1.5em) / 2);
-  left: calc(100% - 1.5em - .5em);
-  width: 4.5em;
-  height: 4.5em;
-  border-radius: 50%;
-  background-color: #ccc;
+  top: 2px;
+  left: calc(100% - 1.5em - .5em - 2px);
+  width: 6em;
+  height: 9em;
   transform: scale(calc(1/3));
   transform-origin: 0 0;
+}
+
+.itext-clear {
+  position: absolute;
+  top: calc((9em - 3em) / 2);
+  left: calc(4.5em - 3em);
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: #ccc;
 }
 
 .itext-clear-hidden {
