@@ -1,0 +1,111 @@
+.ser-de-items {
+  border-top: 1px solid #999;
+  padding: .5em;
+}
+
+.ser-de-items-equipment {
+  border-bottom: 1px solid #ddd;
+  padding: .5em 0;
+}
+
+.ser-de-items-title {
+  display: block;
+  font-weight: bold;
+}
+
+.ser-de-items-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 产品说明项 */
+.ser-de-items-item {
+  display: flex;
+  flex-flow: column;
+  height: 6em;
+  margin: .5em;
+  margin-left: 0;
+}
+
+.ser-de-items-item div {
+  width: 3em;
+  height: 3em;
+  border-radius: 5px;
+}
+
+.ser-de-items-item span {
+  display: block;
+  line-height: 1em;
+}
+
+.ser-de-items-item span:first-of-type {
+  margin: .5em 0;
+}
+
+.ser-de-items-item span:first-of-type ~ span {
+  font-weight: lighter;
+}
+
+.ser-de-items-extra {
+  line-height: 1em;
+  margin: .5em 0;
+}
+
+.ser-de-items-extra span {
+  font-weight: bolder;
+}
+
+/* 业务效率 */
+.ser-de-items-apply {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+.ser-de-items-apply-plan {
+  height: 2.5em;
+  line-height: 1em;
+  margin: 0 1em;
+  margin-left: 0;
+}
+
+.ser-de-items-apply-plan > span:first-of-type {
+  display: block;
+  font-weight: bolder;
+}
+
+.ser-detail-icon-frame.items {
+  margin-top: .5em;
+}
+
+.ser-de-items-apply-plan p {
+  display: inline-block;
+  margin: 0;
+  align-self: flex-start;
+}
+
+.ser-de-items-apply-plan p > span {
+  color: #94DDAC;
+  font-weight: bolder;
+}
+
+/* 备注 */
+.ser-de-items-descriptions {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+}
+
+div.ser-de-items-description:nth-child(n+2) span {
+  margin-top: 1em;
+}
+
+.ser-de-items-description span {
+  display: block;
+  font-weight: bolder;
+}
+
+.ser-de-items-description p {
+  margin: 0;
+  margin-top: .5em;
+}

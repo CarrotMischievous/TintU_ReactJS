@@ -25,6 +25,11 @@
   color: white;
 }
 
+.app-footer-button:first-child:nth-last-child(2) {
+  background-color: white;
+  color: #FC8531;
+}
+
 .app-footer-button:first-child:nth-last-child(2),
 .app-footer-button:first-child:nth-last-child(2) ~ a {
   margin: 0 5%;

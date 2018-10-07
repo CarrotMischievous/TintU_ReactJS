@@ -1,17 +1,31 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
+import { routeServiceProduct } from "../../routes/userRoutes.js";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ServiceFrame from "../../components/ServiceItem/ServiceFrame.jsx";
 import "./styles/servicepage.css";
 
 class ServicePage extends React.Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+
     // 通知Wrapper header的配置
     if (this.props.setHeaderConfiguration) {
       this.props.setHeaderConfiguration({
-        title: "拍摄服务",
-        explain: "根据情况选择自己需要的业务",
+        title: "①拍摄服务",
+        explain: "请选择需要预约的业务",
       });
     }
+
+    this.handleServiceItemSelected = this.handleServiceItemSelected.bind(this);
+  }
+
+  componentWillMount() {
+    this.storeId = this.props.match.params.store;
+  }
+
+  handleServiceItemSelected(productName) {
+    this.props.history.push(routeServiceProduct(this.storeId, productName));
   }
 
   render() {
@@ -40,6 +54,7 @@ class ServicePage extends React.Component {
               },
             ]
           }
+          onServiceItemSelected={this.handleServiceItemSelected}
         />
         <ServiceFrame
           title="外拍服务"
@@ -64,6 +79,7 @@ class ServicePage extends React.Component {
               },
             ]
           }
+          onServiceItemSelected={this.handleServiceItemSelected}
         />
         <ServiceFrame
           title="租赁服务"
@@ -88,6 +104,7 @@ class ServicePage extends React.Component {
               },
             ]
           }
+          onServiceItemSelected={this.handleServiceItemSelected}
         />
         <ServiceFrame
           title="以下业务需电话预约"
@@ -95,27 +112,28 @@ class ServicePage extends React.Component {
           itemList={
             [
               {
-                productName: "identification",
+                productName: "filmU",
                 title: "FlimU系列",
               },
               {
-                productName: "portraits",
+                productName: "follow",
                 title: "活动跟拍",
               },
               {
-                productName: "couple",
+                productName: "videos",
                 title: "视频制作",
               },
               {
-                productName: "degree",
+                productName: "flight",
                 title: "航拍",
               },
             ]
           }
+          onServiceItemSelected={this.handleServiceItemSelected}
         />
       </div>
     );
   }
 }
 
-export default AppWrapper(ServicePage);
+export default withRouter(AppWrapper(ServicePage));

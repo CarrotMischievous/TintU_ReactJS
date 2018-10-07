@@ -18,12 +18,13 @@
   background: white;
   margin: 1px;
   border-radius: 1em;
+  box-sizing: border-box;
 }
 
 .ser-item-img {
   display: block;
   margin: auto;
-  height: calc(3.5em - 2px - .3em);
+  height: calc(3.5em - 2px - .5em);
 }
 
 .ser-item-title {

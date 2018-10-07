@@ -1,0 +1,70 @@
+.schedule-time {
+  border: 1px solid #FC8531;
+  border-radius: 5px;
+  height: 3em;
+  min-width: 4em;
+  width: calc((100% - (8 * 0.25em) - (8 * 1px)) / 4);
+  text-align: center;
+  margin: 0 .25em 1em;
+}
+
+.schedule-time-hour {
+  position: relative;
+  display: block;
+  line-height: 1em;
+  margin: 1em auto;
+  padding-left: 1em;
+  width: min-content;
+  color: #FC8531;
+}
+
+.schedule-time-hour:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: #94DDAC;
+}
+
+/* 预定日期不可用附加not-free的样式 */
+.not-free.schedule-time {
+  border-color: #ddd;
+}
+
+.not-free .schedule-time-hour {
+  color: #ddd;
+}
+
+.not-free .schedule-time-hour:before {
+  background-color: #ddd;
+}
+
+/* 预定日期被选中附加selected的样式 */
+.selected.schedule-time {
+  background-color: #FC8531;
+}
+
+.selected .schedule-time-hour {
+  color: white;
+}
+
+.selected .schedule-time-hour:before {
+  display: none;
+}
+
+.schedule-time-select {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  fill: white;
+}
+
+.selected .schedule-time-select {
+  display: block;
+}

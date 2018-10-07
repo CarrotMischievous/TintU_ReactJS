@@ -1,0 +1,48 @@
+.schedule-page {
+  display: flex;
+  flex-flow: column;
+}
+
+.schedule-page > p {
+  color: #bbb;
+  margin: .5em auto;
+}
+
+.schedule-page-header {
+  display: flex;
+  justify-content: center;
+  margin: .5em auto .5em;
+}
+
+.schedule-page-header p {
+  display: inline-block;
+  position: relative;
+  line-height: 1.5em;
+  margin: .5em .25em;
+  padding-left: 1em;
+}
+
+.schedule-page-header p:before {
+  position: absolute;
+  content: "";
+  top: .25em;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+
+.schedule-page-header p:first-child:before {
+  background-color: #94DDAC;
+}
+
+.schedule-page-header p:last-child:before {
+  background-color: #ddd;
+}
+
+.schedule-page-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-bottom: 1px solid #ddd;
+}

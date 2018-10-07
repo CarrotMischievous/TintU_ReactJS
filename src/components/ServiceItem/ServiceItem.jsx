@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withRouter } from 'react-router-dom';
-import { routeServerProduct } from "../../routes/userRoutes.js";
 import "./styles/serviceitem.css";
 
 const imgSrc = (productName) => {
@@ -10,7 +8,16 @@ const imgSrc = (productName) => {
 
 class ServiceItem extends React.Component {
   handleChooseServiceItem() {
-    this.props.history.push(routeServerProduct(this.props.productName));
+    if (!this.chooseMoved) {
+      if (this.props.onSelected) {
+        this.props.onSelected(this.props.productName);
+      }
+    }
+    this.chooseMoved = false;
+  }
+
+  handleChooseServiceMove() {
+    this.chooseMoved = true;
   }
 
   render() {
@@ -18,7 +25,8 @@ class ServiceItem extends React.Component {
       <div
         className="service-item"
         style={this.props.style}
-        onTouchEnd={this.handleChooseServiceItem.bind(this)}>
+        onTouchEnd={this.handleChooseServiceItem.bind(this)}
+        onTouchMove={this.handleChooseServiceMove.bind(this)}>
         <div className="ser-item-imgframe">
           <img className="ser-item-img" src={imgSrc(this.props.productName)} alt="service" />
         </div>
@@ -32,6 +40,7 @@ ServiceItem.propTypes = {
   productName: PropTypes.string,
   title: PropTypes.string,
   style: PropTypes.object,
+  onSelected: PropTypes.func,
 };
 
-export default withRouter(ServiceItem);
+export default ServiceItem;

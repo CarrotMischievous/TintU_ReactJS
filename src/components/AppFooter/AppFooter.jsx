@@ -1,7 +1,7 @@
 import React from "react";
-import "./styles/appfooter.css";
 import { Button } from "antd-mobile";
 import PropTypes from "prop-types";
+import "./styles/appfooter.css";
 
 const preCls = "app-footer";
 

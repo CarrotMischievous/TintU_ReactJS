@@ -7,7 +7,9 @@ import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import "./styles/myinfo.css";
 
 class MyInfoPage extends React.Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+
     // 通知Wrapper header的配置
     if (this.props.setHeaderConfiguration) {
       this.props.setHeaderConfiguration({
@@ -23,11 +25,6 @@ class MyInfoPage extends React.Component {
           {
             title: "取消",
             onItemClicked: this.handleUserCancel.bind(this),
-            style: {
-              backgroundColor: "white",
-              color: "#FC8531",
-              borderColor: "#FC8531",
-            },
           },
           {
             title: "保存",

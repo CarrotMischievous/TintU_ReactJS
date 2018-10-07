@@ -1,0 +1,18 @@
+.service-detail-page {
+  
+}
+
+.ser-detail-icon-frame {
+  display: flex;
+}
+
+.ser-detail-icon-frame > span {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.ser-detail-icon-frame svg {
+  height: 1em;
+  width: 1em;
+  fill: #94DDAC;
+}

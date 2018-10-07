@@ -31,6 +31,7 @@ class ServiceFrame extends React.Component {
                 style={this.parseItemStyle(frameStyle, item.style)}
                 productName={item.productName}
                 title={item.title}
+                onSelected={this.props.onServiceItemSelected}
               />
             );
           })}

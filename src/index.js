@@ -20,6 +20,8 @@ class App extends React.Component {
             <PageRoute exact path={routes.PAGE_INDEX} />
             <PageRoute exact path={routes.PAGE_SERVE} />
             <PageRoute exact path={routes.PAGE_PRODUCT} />
+            <PageRoute exact path={routes.PAGE_SCHEDULE_DATE} />
+            <PageRoute exact path={routes.PAGE_SCHEDULE_TIME} />
             <PageRoute exact path={routes.PAGE_SELF} />
             <PageRoute exact path={routes.PAGE_NOTIF} />
             <PageRoute exact path={routes.PAGE_ORDER} />

@@ -1,0 +1,10 @@
+.ser-de-show {
+  border-top: 1px solid #999;
+  padding: 1em;
+}
+
+.ser-de-show span {
+  display: block;
+  margin-bottom: .5em;
+  font-weight: bolder;
+}

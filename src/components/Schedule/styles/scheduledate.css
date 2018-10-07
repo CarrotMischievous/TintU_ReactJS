@@ -1,0 +1,96 @@
+.schedule-date {
+  position: relative;
+  border: 1px solid #FC8531;
+  border-radius: 5px;
+  height: 5em;
+  min-width: 4em;
+  width: calc((100% - (10 * 0.25em) - (10 * 1px)) / 5);
+  text-align: center;
+  margin: 0 .25em 2em;
+}
+
+.schedule-date:before {
+  position: absolute;
+  content: "";
+  top: calc(1px * 2 + 100% + .5em);
+  left: calc(1px + 50% - .25em);
+  width: .5em;
+  height: .5em;
+  border-radius: 50%;
+  background-color: #94DDAC;
+}
+
+.schedule-date p {
+  display: block;
+  margin: 0;
+  line-height: 1;
+}
+
+.schedule-date-upper {
+  height: 4em;
+  background-color: rgba(252, 133, 49, .5);
+}
+
+.schedule-date-month {
+  font-size: 1em;
+  padding: .5em 0;
+  color: white;
+}
+
+.schedule-date-date {
+  font-size: 2em;
+  color: white;
+}
+
+.schedule-date-lower {
+  height: 1em;
+}
+
+.schedule-date-day {
+  font-size: .8em;
+  padding: .1em 0;
+  color: #FC8531;
+}
+
+/* 预定日期不可用附加not-free的样式 */
+.not-free.schedule-date {
+  border-color: #ddd;
+}
+
+.not-free.schedule-date:before {
+  background-color: #ddd;
+}
+
+.not-free .schedule-date-upper {
+  background-color: #ddd;
+}
+
+.not-free .schedule-date-day {
+  color: #ddd;
+}
+
+/* 预定日期被选中附加selected的样式 */
+.selected.schedule-date {
+  background-color: #FC8531;
+  height: 6.5em;
+  margin-bottom: .5em;
+}
+
+.selected.schedule-date:before {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.schedule-date-select {
+  display: none;
+  position: absolute;
+  bottom: .5em;
+  left: calc((100% - 2px - 1em) / 2);
+  fill: white;
+}
+
+.selected .schedule-date-select {
+  display: block;
+}

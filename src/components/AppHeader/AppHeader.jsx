@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import logo from "../../img/logo.png";
-import { Icon } from 'antd-mobile';
 import "./styles/appheader.css";
 
 // 顶端提示当前页面内容，包括Logo
@@ -14,13 +14,16 @@ class AppHeader extends React.Component {
       <div className="app-header">
         <img className="app-header-img" src={logo} alt="logo" />
         <div className={`app-header-title ${classNameExp}`}>
-          <Icon type="check-circle-o" size="xs" />
           <span className="app-header-content">{urlTitle}</span>
           <span className="app-header-explain">{urlExplain}</span>
         </div>
       </div>
     );
   }
+}
+
+AppHeader.propTypes = {
+  headerConf: PropTypes.object,
 }
 
 export default AppHeader;

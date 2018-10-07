@@ -1,0 +1,38 @@
+.ser-de-sample {
+  border-top: 1px solid #999;
+  padding: 1em;
+}
+
+.ser-de-sample-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  border-radius: .5em;
+  padding: 1em 0;
+  margin: auto;
+  background-color: #FC8531;
+}
+
+.ser-de-sample-quote span {
+  color: white;
+}
+
+.ser-de-sample-case img {
+  width: 100%;
+}
+
+.ser-de-sample-case span {
+  display: block;
+}
+
+.ser-de-sample-case span:first-child {
+  font-weight: bolder;
+  margin: 1em 0 .5em 0;
+}
+
+.ser-de-sample-case span:last-child {
+  font-weight: lighter;
+  margin-top: .5em;
+}

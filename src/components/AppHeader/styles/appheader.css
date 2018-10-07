@@ -6,6 +6,7 @@
 .app-header-img {
   display: block;
   margin: auto;
+  height: 3em;
 }
 
 .app-header-title {

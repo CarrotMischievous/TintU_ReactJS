@@ -47,3 +47,22 @@ export const updateVCode = (vCode) => {
     vCode,
   }
 }
+
+// Schedule date/time action types
+export const
+  UPDATE_DATE_SELECTED = "UPDATE_DATE_SELECTED",
+  UPDATE_TIME_SELECTED = "UPDATE_TIME_SELECTED";
+
+export const updateDateSelected = (selectedIndex) => {
+  return {
+    type: UPDATE_DATE_SELECTED,
+    selectedIndex,
+  }
+}
+
+export const updateTimeSelected = (selectedIndex) => {
+  return {
+    type: UPDATE_TIME_SELECTED,
+    selectedIndex,
+  }
+}

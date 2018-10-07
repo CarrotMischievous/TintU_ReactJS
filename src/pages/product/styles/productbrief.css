@@ -1,0 +1,35 @@
+.ser-de-brief {
+  display: flex;
+  justify-content: space-between;
+  padding: .5em;
+  height: 6em;
+}
+
+.ser-de-brief-img-frame {
+  width: 5em;
+  height: calc(6em + 2px);
+  text-align: center;
+  border: 2px solid;
+  border-radius: .5em;
+  box-sizing: border-box;
+}
+
+.ser-de-brief-img-frame span {
+  font-weight: bolder;
+  line-height: 1em;
+  color: white;
+}
+
+.ser-de-brief-img-wrapper {
+  width: calc(5em - 2px);
+  height: calc(5em - 2px);
+}
+
+.ser-de-brief-img-wrapper img {
+  display: block;
+  height: calc(5em - 2px * 2);
+}
+
+.ser-detail-icon-frame.brief {
+  align-self: flex-end;
+}
