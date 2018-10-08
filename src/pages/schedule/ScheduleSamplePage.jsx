@@ -10,6 +10,7 @@ export default function(ScheduleComponent) {
     render() {
       return (
         <div className={`${preCls} page-frame`}>
+          {this.props.children}
           <StoreEntry storeId={this.props.storeId} />
           <ScheduleSelected
             selectedItems={this.props.selectedItems}/>

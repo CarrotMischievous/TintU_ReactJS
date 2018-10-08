@@ -9,7 +9,7 @@ import "./styles/scheduletime.css";
 const preCls = "schedule-time";
 
 class ScheduleTime extends React.Component {
-  handleItemSelected() {
+  handleItemSelected = () => {
     const updateIndex = (this.props.index === this.props.selectedIndex)
       ? -1 : this.props.index;
 
@@ -18,9 +18,11 @@ class ScheduleTime extends React.Component {
         this.props.updateTimeSelected(updateIndex);
       }
     }
+
+    return;
   }
 
-  canRenderSelected() {
+  canRenderSelected = () => {
     if (this.props.index === this.props.selectedIndex) {
       if (this.props.isAvailable) {
         return true;
@@ -38,7 +40,7 @@ class ScheduleTime extends React.Component {
     return (
       <div
         className={`${preCls} ${Selected} ${Available}`}
-        onTouchEnd={this.handleItemSelected.bind(this)}
+        onTouchEnd={this.handleItemSelected}
       >
         <p className={`${preCls}-hour`}>
           {transMinsToTime(scheduleTime)}

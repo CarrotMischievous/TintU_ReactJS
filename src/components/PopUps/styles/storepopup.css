@@ -1,0 +1,124 @@
+.store-popup {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc((100% - 20em) / 2);
+  right: calc((100% - 20em) / 2);
+  width: 20em;
+  height: 20em;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.store-popup.fadein {
+  animation-name: fadeIn;
+  animation-duration: .2s;
+  animation-iteration-count: 1;
+}
+
+.store-popup.fadeout {
+  visibility: hidden;
+  animation-name: fadeOut;
+  animation-duration: .2s;
+  animation-iteration-count: 1;
+}
+
+.store-popup.fadeout * {
+  display: none
+}
+
+.store-popup-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+  box-sizing: border-box;
+  margin: 1em;
+}
+
+.store-popup-photo > i,
+.store-popup-photo > p {
+  margin: auto;
+}
+
+.store-popup-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
+  padding: 1em 0;
+  margin: 0 1em;
+  border-top: 1px solid #ddd;
+}
+
+.store-popup-infos p {
+  display: block;
+  position: relative;
+  height: 1.15em;
+  padding-left: 1.5em;
+  margin: 0;
+}
+
+/* 保证换行的时候p左端对齐 */
+.store-popup-infos p > i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5em;
+  height: 100%;
+}
+
+.store-popup-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* fa组件修改样式 */
+.store-popup-infos .fa-fw {
+  width: 1.5em;
+}
+
+.store-popup .fa-inverse {
+  color: #666;
+}
+
+/* 淡入淡出 */
+@-webkit-keyframes fadeIn {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  10% {
+    width: 2em;
+    height: 2em;
+    opacity: 0;
+  }
+  100% {
+    width: 20em;
+    height: 20em;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    width: 20em;
+    height: 20em;
+    visibility: visible;
+  }
+  90% {
+    width: 2em;
+    height: 2em;
+    visibility: hidden;
+  }
+  100% {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
