@@ -8,6 +8,7 @@ import ProductPage from "../../pages/product/ProductPage.jsx";
 import MyInfoPage from "../../pages/myinfo/MyInfoPage.jsx";
 import ScheduleDatePage from "../../pages/schedule/ScheduleDatePage.jsx";
 import ScheduleTimePage from "../../pages/schedule/ScheduleTimePage.jsx";
+import OrderAddOnsPage from "../../pages/orders/OrderAddOnsPage.jsx";
 
 // 主页面标记对于的path以及page组件
 const pagePaths = {
@@ -17,6 +18,7 @@ const pagePaths = {
   [routes.PAGE_PRODUCT]: ProductPage,
   [routes.PAGE_SCHEDULE_DATE]: ScheduleDatePage,
   [routes.PAGE_SCHEDULE_TIME]: ScheduleTimePage,
+  [routes.PAGE_ORDER_ADDON]: OrderAddOnsPage,
   [routes.PAGE_SELF]: MyInfoPage,
   [routes.PAGE_NOTIF]: undefined,
   [routes.PAGE_ORDER]: undefined,

@@ -2,10 +2,11 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ScheduleSample from "./ScheduleSamplePage.jsx";
-import StorePopup from "../../components/PopUps/StorePopup.jsx";
+import ScheduleSurePopup from "../../components/PopUps/ScheduleSurePopup.jsx";
 import ScheduleTime from "../../components/Schedule/ScheduleTime.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import * as Actions from "../../store/actions.js";
+import { PAGE_ORDER_ADDON } from "../../routes/userRoutes.js";
 import { calcAllDayTimeFragment } from "../../helper/DateCalculator.js";
 
 /* 距0点的分钟数来表示时间，这应该也是和数据库关联的 */
@@ -72,10 +73,13 @@ class ScheduleTimePage extends React.Component {
     }
   }
 
+  handleScheduleSure = () => {
+    this.props.history.push(PAGE_ORDER_ADDON);
+  }
+
   render() {
     return (
       <ScheduleSamplePage
-        storeId={0}
         selectedItems={[
           {
             title: "已选择项目",
@@ -89,15 +93,22 @@ class ScheduleTimePage extends React.Component {
         scheduleItems={this.scheduleItems}
         notice={`营业时间为10:00~18:00，其余时间请致电咨询`}
       >
-        <StorePopup
+        <ScheduleSurePopup
           isHidden={this.state.isPopUpHidden}
           onPopUpHidden={this.handlePopUpHidden}
-          store={{
-            name: "南京玄武店",
-            address: "南京市玄武大道金茂汇",
-            phone: "18512542541",
-            email: "njtzl@gmail.com",
-            path: "南京轨道交通一号线玄武门站（1号出口）"
+          onHandleScheduleSure={this.handleScheduleSure}
+          schedule={{
+            date: {
+              year: 2018,
+              month: 10,
+              date: 9,
+              day: 2,
+            },
+            time: 990,
+            store: {
+              name: "南京玄武店",
+            },
+            product: "证件照",
           }}
         />
       </ScheduleSamplePage>

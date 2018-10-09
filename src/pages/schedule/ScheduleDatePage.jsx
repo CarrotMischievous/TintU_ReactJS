@@ -6,9 +6,12 @@ import ScheduleSample from "./ScheduleSamplePage.jsx";
 import ScheduleDate from "../../components/Schedule/ScheduleDate.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import * as Actions from "../../store/actions.js";
+import { PAGE_SCHEDULE_TIME } from "../../routes/userRoutes.js";
 import { calcFutureDays } from "../../helper/DateCalculator.js";
 
+/* 计划可选14天，加上当天凑整 */
 const PLAN_DAYS = 15;
+
 const ScheduleSamplePage = ScheduleSample(ScheduleDate);
 
 class ScheduleDatePage extends React.Component {
@@ -56,13 +59,12 @@ class ScheduleDatePage extends React.Component {
   }
 
   handleDateSelected() {
-    this.props.history.push(`${this.props.location.pathname}/time`);
+    this.props.history.push(PAGE_SCHEDULE_TIME);
   }
 
   render() {
     return (
       <ScheduleSamplePage
-        storeId={0}
         selectedItems={[
           {
             title: "已选择项目",

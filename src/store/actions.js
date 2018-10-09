@@ -66,3 +66,33 @@ export const updateTimeSelected = (selectedIndex) => {
     selectedIndex,
   }
 }
+
+// store information action types
+export const
+  UPDATE_STORE = "UPDATE_STORE";
+
+export const updateStore = (store) => {
+  return {
+    type: UPDATE_STORE,
+    store,
+  }
+}
+
+// product infomation action types
+export const
+  UPDATE_PRODUCT_NAME = "UPDATE_PRODUCT_NAME",
+  CLEAR_PRODUCT_NAME = "CLEAR_PRODUCT_NAME";
+
+export const updateProductName = (productName, productChName) => {
+  return {
+    type: UPDATE_PRODUCT_NAME,
+    productName,
+    productChName: productChName || productName,
+  }
+}
+
+export const clearProductName = () => {
+  return {
+    type: CLEAR_PRODUCT_NAME,
+  }
+}

@@ -4,7 +4,7 @@
   justify-content: center;
   border: 1px solid transparent;
   border-radius: 1em;
-  height: calc(3.5em + 2px);
+  height: calc(4em + 2px);
   margin-top: 1em;
   width: 45%;
 }
@@ -13,8 +13,8 @@
   display: inline-flex;
   flex-flow: column;
   justify-content: center;
-  width: 3.5em;
-  height: 3.5em;
+  width: 4em;
+  height: 4em;
   background: white;
   margin: 1px;
   border-radius: 1em;
@@ -30,4 +30,5 @@
 .ser-item-title {
   display: inline-block;
   margin: auto;
+  color: #666;
 }

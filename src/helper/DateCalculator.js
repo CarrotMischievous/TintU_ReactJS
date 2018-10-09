@@ -90,6 +90,22 @@ const transDayToWeek = (day) => {
   return `周${Week[day]}`;
 }
 
+/* 全部可Schedule的时间格式化 */
+const transDateToDisplay = (day, time) => {
+  let dayDate = "";
+  let dayTime = "";
+
+  if (day) {
+    dayDate = `${day.year}年${day.month}月${day.date}日（${transDayToWeek(day.day)}）`;
+  }
+
+  if (time) {
+    dayTime = `${transMinsToTime(time)}`;
+  }
+
+  return `${dayDate}${dayTime}`;
+}
+
 /* 距离0点的分钟差转换成显示时间 */
 const transMinsToTime = (minutes) => {
   const timeMin = minutes % 60;
@@ -100,5 +116,6 @@ module.exports = {
   calcFutureDays,
   calcAllDayTimeFragment,
   transDayToWeek,
+  transDateToDisplay,
   transMinsToTime,
 }

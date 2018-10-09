@@ -8,7 +8,7 @@ import "./styles/scheduledate.css";
 
 const preCls = "schedule-date";
 
-class SchduleDate extends React.Component {
+class ScheduleDate extends React.Component {
   handleItemSelected() {
     const updateIndex = (this.props.index === this.props.selectedIndex)
       ? -1 : this.props.index;
@@ -52,7 +52,7 @@ class SchduleDate extends React.Component {
   }
 }
 
-SchduleDate.propTypes = {
+ScheduleDate.propTypes = {
   item: PropTypes.object,
   selectedIndex: PropTypes.number,
 }
@@ -72,4 +72,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SchduleDate);
+export default connect(mapStateToProps, mapDispatchToProps)(ScheduleDate);

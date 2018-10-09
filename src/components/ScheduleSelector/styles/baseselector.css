@@ -1,10 +1,4 @@
-.schedule-selected {
-  display: flex;
-  padding: .25em 0;
-  margin-top: .5em;
-}
-
-.schedule-selected-frame {
+.schedule-selector {
   display: inline-block;
   background-color: rgba(252, 133, 49, .5);
   border-radius: 5px;
@@ -12,18 +6,18 @@
   padding: .5em;
 }
 
-.schedule-selected-frame p{
+.schedule-selector p{
   display: block;
   line-height: 1.5em;
 }
 
-.schedule-selected-title {
+.schedule-selector-title {
   position: relative;
   margin: 0;
   color: #666;
 }
 
-.schedule-selected-content {
+.schedule-selector-content {
   margin: 0;
   color: #FC8531;
   font-weight: bolder;

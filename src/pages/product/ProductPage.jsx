@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import { routeProduct2Schedule } from "../../routes/userRoutes.js";
+import { connect } from 'react-redux';
+import * as Actions from "../../store/actions.js";
+import { PAGE_SCHEDULE_DATE } from "../../routes/userRoutes.js";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ProductBrief from "./ProductBrief.jsx";
 import ProductItems from "./ProductItems.jsx";
@@ -41,16 +43,19 @@ class ProductPage extends React.Component {
   componentWillMount() {
     // Service变更不会影响scroll位置，所以默认指向最开始
     window.scrollTo(0, 0);
-
-    this.storeId = this.props.match.params.store;
   }
 
+  /* 退回到产品选择，需要product置空 */
   handleReselectProduct() {
+    if (this.props.clearProductName) {
+      this.props.clearProductName();
+    }
+
     this.props.history.goBack();
   }
 
   handleNextStep() {
-    this.props.history.push(routeProduct2Schedule(this.props.location.pathname));
+    this.props.history.push(PAGE_SCHEDULE_DATE);
   }
 
   render() {
@@ -133,4 +138,19 @@ class ProductPage extends React.Component {
   }
 }
 
-export default withRouter(AppWrapper(ProductPage));
+const mapStateToProps = (state) => {
+  //console.log(state);
+  return {
+    productName: state.product.productName,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearProductName: (productName) => {
+      dispatch(Actions.clearProductName(productName));
+    },
+  }
+}
+
+export default withRouter(AppWrapper(connect(mapStateToProps, mapDispatchToProps)(ProductPage)));

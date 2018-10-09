@@ -33,7 +33,7 @@
 .app-footer-button:first-child:nth-last-child(2),
 .app-footer-button:first-child:nth-last-child(2) ~ a {
   margin: 0 5%;
-  width: 40%;
+  width: 35%;
 }
 
 .app-footer-button:first-child:nth-last-child(1) {

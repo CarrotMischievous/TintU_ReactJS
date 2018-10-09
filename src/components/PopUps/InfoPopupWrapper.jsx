@@ -51,6 +51,7 @@ export default function InfoPopupWrapper(WrapComponent) {
           />
           <WrapComponent
             isAnimation={isAnimation}
+            onHandlePopupQuit={this.handleTouchLayerToQuit}
             {...this.props}
           />
         </div>

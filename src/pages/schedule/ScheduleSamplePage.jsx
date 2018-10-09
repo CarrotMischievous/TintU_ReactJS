@@ -1,6 +1,7 @@
 import React from "react";
 import StoreEntry from "../../components/Store/StoreEntry.jsx";
-import ScheduleSelected from "../../components/Schedule/ScheduleSelected.jsx";
+import ScheduleSelector from "../../components/ScheduleSelector/ScheduleSelector.jsx";
+import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
 import "./styles/schedulepage.css";
 
 const preCls = "schedule-page";
@@ -12,8 +13,9 @@ export default function(ScheduleComponent) {
         <div className={`${preCls} page-frame`}>
           {this.props.children}
           <StoreEntry storeId={this.props.storeId} />
-          <ScheduleSelected
-            selectedItems={this.props.selectedItems}/>
+          <ScheduleSelector>
+            <ProductSelector />
+          </ScheduleSelector>
           <div className={`${preCls}-header`}>
             <p>可预约</p>
             <p>已约满</p>

@@ -1,6 +1,9 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import { routeServiceProduct } from "../../routes/userRoutes.js";
+import { connect } from 'react-redux';
+import * as Actions from "../../store/actions.js";
+import { PAGE_PRODUCT } from "../../routes/userRoutes.js";
+import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ServiceFrame from "../../components/ServiceItem/ServiceFrame.jsx";
 import "./styles/servicepage.css";
@@ -25,12 +28,18 @@ class ServicePage extends React.Component {
   }
 
   handleServiceItemSelected(productName) {
-    this.props.history.push(routeServiceProduct(this.storeId, productName));
+    /* 通过redux刷新当前选择的product */
+    if (this.props.updateProductName) {
+      this.props.updateProductName(productName);
+    }
+
+    this.props.history.push(PAGE_PRODUCT);
   }
 
   render() {
     return (
       <div className="service-page flex-container page-frame">
+        <StoreEntry />
         <ServiceFrame
           title="棚拍服务"
           frameStyle={{backgroundColor: "#FADCBE"}}
@@ -136,4 +145,12 @@ class ServicePage extends React.Component {
   }
 }
 
-export default withRouter(AppWrapper(ServicePage));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateProductName: (productName) => {
+      dispatch(Actions.updateProductName(productName));
+    },
+  }
+}
+
+export default withRouter(AppWrapper(connect(null, mapDispatchToProps)(ServicePage)));
