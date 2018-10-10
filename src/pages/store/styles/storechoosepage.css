@@ -1,0 +1,11 @@
+.store-choose-page {
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-flow: column;
+}
+
+.store-choose-page-title {
+  display: block;
+  font-size: 1.2em;
+  margin: 1em auto;
+}

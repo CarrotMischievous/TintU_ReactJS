@@ -5,6 +5,8 @@ import ScheduleSample from "./ScheduleSamplePage.jsx";
 import ScheduleSurePopup from "../../components/PopUps/ScheduleSurePopup.jsx";
 import ScheduleTime from "../../components/Schedule/ScheduleTime.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
+import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
+import DateSelector from "../../components/ScheduleSelector/DateSelector.jsx";
 import * as Actions from "../../store/actions.js";
 import { PAGE_ORDER_ADDON } from "../../routes/userRoutes.js";
 import { calcAllDayTimeFragment } from "../../helper/DateCalculator.js";
@@ -33,10 +35,10 @@ class ScheduleTimePage extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    //console.log(this.props.selectedIndex, prevProps.selectedIndex);
-    if (prevProps.selectedIndex !== this.props.selectedIndex) {
+    //console.log(this.props.scheduleTime, prevProps.scheduleTime);
+    if (prevProps.scheduleTime !== this.props.scheduleTime) {
       /* item被点击了一次，弹出确认窗 */
-      if (-1 !== this.props.selectedIndex) {
+      if (-1 !== this.props.scheduleTime) {
         this.setState({
           isPopUpHidden: false,
         });
@@ -53,7 +55,7 @@ class ScheduleTimePage extends React.Component {
     const availableTime = [600, 660, 720, 900, 960, 990]; /* 模拟数据库信息，值为偏移0点分钟数 */
 
     /* 刷新项目的可使用性 */
-    this.scheduleItems = timeFragments.map((time) => {
+    this.scheduleItems = timeFragments.map((time, index) => {
       const isAvailable = availableTime.includes(time);
       return {
         entry: time,
@@ -68,8 +70,8 @@ class ScheduleTimePage extends React.Component {
     });
 
     /* 取消已经选择的时间 */
-    if (this.props.updateTimeSelected) {
-      this.props.updateTimeSelected(-1);
+    if (this.props.clearScheduleTime) {
+      this.props.clearScheduleTime();
     }
   }
 
@@ -80,38 +82,39 @@ class ScheduleTimePage extends React.Component {
   render() {
     return (
       <ScheduleSamplePage
-        selectedItems={[
-          {
-            title: "已选择项目",
-            content: "证件照",
-          },
-          {
-            title: "已选择日期",
-            content: "2018年10月9日（周二）",
-          }
+        selectors={[
+          (<ProductSelector
+            key="product"
+            onSelectedItemNone={undefined}
+            onChangeSelectedItem={undefined} />),
+          (<DateSelector
+            key="date"
+            onSelectedItemNone={undefined}
+            onChangeSelectedItem={undefined} />),
         ]}
+        popup={
+          <ScheduleSurePopup
+            isHidden={this.state.isPopUpHidden}
+            onPopUpHidden={this.handlePopUpHidden}
+            onHandleScheduleSure={this.handleScheduleSure}
+            schedule={{
+              date: {
+                year: 2018,
+                month: 10,
+                date: 9,
+                day: 2,
+              },
+              time: 990,
+              store: {
+                name: "南京玄武店",
+              },
+              product: "证件照",
+            }}
+          />
+        }
         scheduleItems={this.scheduleItems}
         notice={`营业时间为10:00~18:00，其余时间请致电咨询`}
-      >
-        <ScheduleSurePopup
-          isHidden={this.state.isPopUpHidden}
-          onPopUpHidden={this.handlePopUpHidden}
-          onHandleScheduleSure={this.handleScheduleSure}
-          schedule={{
-            date: {
-              year: 2018,
-              month: 10,
-              date: 9,
-              day: 2,
-            },
-            time: 990,
-            store: {
-              name: "南京玄武店",
-            },
-            product: "证件照",
-          }}
-        />
-      </ScheduleSamplePage>
+      />
     );
   }
 }
@@ -119,14 +122,14 @@ class ScheduleTimePage extends React.Component {
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    selectedIndex: state.schedule.timeSelectedIndex,
+    scheduleTime: state.schedule.time,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateTimeSelected: (selectedIndex) => {
-      dispatch(Actions.updateTimeSelected(selectedIndex));
+    clearScheduleTime: () => {
+      dispatch(Actions.clearScheduleTime());
     },
   }
 }

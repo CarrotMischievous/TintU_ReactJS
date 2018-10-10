@@ -23,14 +23,13 @@ class ServicePage extends React.Component {
     this.handleServiceItemSelected = this.handleServiceItemSelected.bind(this);
   }
 
-  componentWillMount() {
-    this.storeId = this.props.match.params.store;
-  }
-
   handleServiceItemSelected(productName) {
     /* 通过redux刷新当前选择的product */
-    if (this.props.updateProductName) {
-      this.props.updateProductName(productName);
+    if (this.props.updateProduct) {
+      this.props.updateProduct({
+        productName,
+        productChName: "证件照",
+      });
     }
 
     this.props.history.push(PAGE_PRODUCT);
@@ -147,8 +146,8 @@ class ServicePage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateProductName: (productName) => {
-      dispatch(Actions.updateProductName(productName));
+    updateProduct: (productName, productChName) => {
+      dispatch(Actions.updateProduct(productName, productChName));
     },
   }
 }

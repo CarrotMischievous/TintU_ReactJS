@@ -1,29 +1,26 @@
 import {
-  UPDATE_STORE
+  UPDATE_STORE,
+  CLEAR_STORE
 } from "./actions.js";
+import { fetchSessionJson } from "../helper/sessionStorageHelper.js";
 
 /* 这里state是主state的一项属性 */
 export default function (state, action) {
   /* 初始化 */
   if (!state) {
-    state = {
-      store: {
-        id: 1,
-        name: "南京玄武店",
-        address: "南京市玄武大道金茂汇",
-        phone: "18512542541",
-        email: "njtzl@gmail.com",
-        path: "南京轨道交通一号线玄武门站（1号出口）",
-      },
-    };
+    /* state没值的情况从session里面优先尝试读取 */
+    const store = fetchSessionJson("store") || null;
+
+    //console.log(store);
+    state = store;
   }
 
   /* 根据Type处理state */
   switch(action.type) {
     case UPDATE_STORE:
-      return {
-        store: action.store,
-      };
+      return action.store;
+    case CLEAR_STORE:
+      return null;
     default:
       return state;
   }

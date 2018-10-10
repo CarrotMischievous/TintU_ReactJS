@@ -1,3 +1,8 @@
+import {
+  removeSessionData,
+  saveSessionAsJson
+} from "../helper/sessionStorageHelper.js";
+
 // personal information action types
 export const UPDATE_SEX = "UPDATE_SEX",
   UPDATE_CODEAPPLY = "UPDATE_CODEAPPLY",
@@ -50,49 +55,107 @@ export const updateVCode = (vCode) => {
 
 // Schedule date/time action types
 export const
-  UPDATE_DATE_SELECTED = "UPDATE_DATE_SELECTED",
-  UPDATE_TIME_SELECTED = "UPDATE_TIME_SELECTED";
+  UPDATE_SCHEDULE_DATE = "UPDATE_SCHEDULE_DATE",
+  CLEAR_SCHEDULE_DATE = "CLEAR_SCHEDULE_DATE",
+  UPDATE_SCHEDULE_TIME = "UPDATE_SCHEDULE_TIME",
+  CLEAR_SCHEDULE_TIME = "CLEAR_SCHEDULE_TIME",
+  INIT_SCHEDULE = "INIT_SCHEDULE";
 
-export const updateDateSelected = (selectedIndex) => {
+export const updateScheduleDate = (date) => {
+  /* 存储到sessionStorage */
+  saveSessionAsJson("scheduleDate", date);
+
   return {
-    type: UPDATE_DATE_SELECTED,
-    selectedIndex,
+    type: UPDATE_SCHEDULE_DATE,
+    date,
   }
 }
 
-export const updateTimeSelected = (selectedIndex) => {
+export const clearScheduleDate = () => {
+  /* 删除sessionStorage */
+  removeSessionData("scheduleDate");
+
   return {
-    type: UPDATE_TIME_SELECTED,
-    selectedIndex,
+    type: CLEAR_SCHEDULE_DATE,
+  }
+}
+
+export const updateScheduleTime = (time) => {
+  /* 存储到sessionStorage */
+  saveSessionAsJson("scheduleTime", time);
+  
+  return {
+    type: UPDATE_SCHEDULE_TIME,
+    time,
+  }
+}
+
+export const clearScheduleTime = () => {
+  /* 删除sessionStorage */
+  removeSessionData("scheduleTime");
+
+  return {
+    type: CLEAR_SCHEDULE_TIME,
+  }
+}
+
+export const initSchedule = () => {
+  return {
+    type: INIT_SCHEDULE,
   }
 }
 
 // store information action types
 export const
-  UPDATE_STORE = "UPDATE_STORE";
+  UPDATE_STORE = "UPDATE_STORE",
+  CLEAR_STORE = "CLEAR_STORE";
 
 export const updateStore = (store) => {
+  /* 存储到sessionStorage */
+  saveSessionAsJson("store", store);
+
   return {
     type: UPDATE_STORE,
     store,
   }
 }
 
-// product infomation action types
-export const
-  UPDATE_PRODUCT_NAME = "UPDATE_PRODUCT_NAME",
-  CLEAR_PRODUCT_NAME = "CLEAR_PRODUCT_NAME";
-
-export const updateProductName = (productName, productChName) => {
+export const clearStore = () => {
+  /* 删除sessionStorage */
+  removeSessionData("store");
+  
   return {
-    type: UPDATE_PRODUCT_NAME,
-    productName,
-    productChName: productChName || productName,
+    type: UPDATE_STORE,
   }
 }
 
-export const clearProductName = () => {
+// product infomation action types
+export const
+  UPDATE_PRODUCT = "UPDATE_PRODUCT",
+  CLEAR_PRODUCT = "CLEAR_PRODUCT",
+  INIT_PRODUCT = "INIT_PRODUCT";
+
+export const updateProduct = (product) => {
+  /* 存储到sessionStorage */
+  saveSessionAsJson("product", product);
+
   return {
-    type: CLEAR_PRODUCT_NAME,
+    type: UPDATE_PRODUCT,
+    product
+  }
+}
+
+export const clearProduct = () => {
+  /* 删除sessionStorage */
+  removeSessionData("product");
+
+  return {
+    type: CLEAR_PRODUCT,
+  }
+}
+
+export const initProduct = () => {
+  return {
+    type: INIT_PRODUCT,
   }
 }

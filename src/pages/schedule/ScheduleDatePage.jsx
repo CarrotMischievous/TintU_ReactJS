@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ScheduleSample from "./ScheduleSamplePage.jsx";
 import ScheduleDate from "../../components/Schedule/ScheduleDate.jsx";
+import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
-import * as Actions from "../../store/actions.js";
 import { PAGE_SCHEDULE_TIME } from "../../routes/userRoutes.js";
-import { calcFutureDays } from "../../helper/DateCalculator.js";
+import { calcFutureDays, is2DateEquals } from "../../helper/DateCalculator.js";
 
 /* 计划可选14天，加上当天凑整 */
 const PLAN_DAYS = 15;
@@ -28,7 +28,8 @@ class ScheduleDatePage extends React.Component {
   }
 
   componentWillMount() {
-    /* 计算后14天的日期信息 */
+
+    /* 计算当日起15天的日期信息 */
     const futureDays = calcFutureDays(new Date(), PLAN_DAYS);
 
     /* 根据日期查询数据库，返回可预约日期偏移（当天不需要处理） */
@@ -42,34 +43,27 @@ class ScheduleDatePage extends React.Component {
         isAvailable,
       }
     });
-
-    /* 默认可能有一个选中的根据参数解析出来 */
-    
   }
 
   /* 渲染完成再跳转，实际上看不出来.. */
   componentDidUpdate(prevProps) {
-    //console.log(this.props.selectedIndex, prevProps.selectedIndex);
-    if (prevProps.selectedIndex !== this.props.selectedIndex) {
-      /* item被点击了一次，如果是选中了一个则直接跳转到时间页面 */
-      if (-1 !== this.props.selectedIndex) {
-        this.handleDateSelected();
+    //console.log(this.props.scheduledDate, prevProps.scheduledDate);
+    if (!is2DateEquals(prevProps.scheduledDate, this.props.scheduledDate)) {
+      /* item被点击了一次，如果是选中了一个合理值则直接跳转到时间页面 */
+      if (this.props.scheduledDate) {
+        this.props.history.push(PAGE_SCHEDULE_TIME);
       }
     }
-  }
-
-  handleDateSelected() {
-    this.props.history.push(PAGE_SCHEDULE_TIME);
   }
 
   render() {
     return (
       <ScheduleSamplePage
-        selectedItems={[
-          {
-            title: "已选择项目",
-            content: "证件照",
-          }
+        selectors={[
+          (<ProductSelector
+            key="product"
+            onSelectedItemNone={undefined}
+            onChangeSelectedItem={undefined} />),
         ]}
         scheduleItems={this.scheduleItems}
         notice={`可预约14天内的档期，新一天的档期于每日10点开放`} />
@@ -78,22 +72,14 @@ class ScheduleDatePage extends React.Component {
 }
 
 ScheduleDatePage.propTypes = {
-  selectedIndex: PropTypes.number,
+  scheduledDate: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    selectedIndex: state.schedule.dateSelectedIndex,
+    scheduledDate: state.schedule.date,
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateDateSelected: (selectedIndex) => {
-      dispatch(Actions.updateDateSelected(selectedIndex));
-    },
-  }
-}
-
-export default withRouter(AppWrapper(connect(mapStateToProps, mapDispatchToProps)(ScheduleDatePage)));
+export default withRouter(AppWrapper(connect(mapStateToProps)(ScheduleDatePage)));

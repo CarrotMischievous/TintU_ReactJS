@@ -18,6 +18,7 @@ class App extends React.Component {
           <PageRoute path={routes.PAGE_ROOT} />
           <Switch>
             <PageRoute exact path={routes.PAGE_INDEX} />
+            <PageRoute exact path={routes.PAGE_STORE_CHOOSE} />
             <PageRoute exact path={routes.PAGE_SERVE} />
             <PageRoute exact path={routes.PAGE_PRODUCT} />
             <PageRoute exact path={routes.PAGE_SCHEDULE_DATE} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import { PAGE_SERVE } from "../../routes/userRoutes.js";
+import { PAGE_STORE_CHOOSE } from "../../routes/userRoutes.js";
 import Introduction from "./Introduction.jsx";
 import CopyRight from "./CopyRight.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
@@ -19,7 +19,7 @@ class WelcomePage extends React.Component {
   }
 
   handleStartAppoinment() {
-    this.props.history.push(PAGE_SERVE);
+    this.props.history.push(PAGE_STORE_CHOOSE);
   }
 
   render() {

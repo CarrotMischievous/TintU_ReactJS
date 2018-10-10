@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 import { displayStoreName } from "./StoreInfos.js";
 import "./styles/storeentry.css";
 
@@ -20,4 +21,11 @@ StoreEntry.propTypes = {
   storeId: PropTypes.number,
 }
 
-export default StoreEntry;
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    store: state.store,
+  };
+}
+
+export default connect(mapStateToProps)(StoreEntry);

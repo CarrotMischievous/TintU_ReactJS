@@ -85,7 +85,7 @@ const calcAllDayTimeFragment = (start_time, totalHour, interval) => {
 }
 
 /* day转换成week的显示内容 */
-const Week = ["一", "二", "三", "四", "五", "六", "日"];
+const Week = ["日", "一", "二", "三", "四", "五", "六"];
 const transDayToWeek = (day) => {
   return `周${Week[day]}`;
 }
@@ -108,8 +108,19 @@ const transDateToDisplay = (day, time) => {
 
 /* 距离0点的分钟差转换成显示时间 */
 const transMinsToTime = (minutes) => {
+  if (-1 === minutes) return "";
   const timeMin = minutes % 60;
   return `${parseInt(minutes / 60, 10)}:${(timeMin / 10) ? "" : "0"}${minutes % 60}`;
+}
+
+/* 比较两个自定义的日期是否相等 */
+const is2DateEquals = (date, scheduleDate) => {
+  if (!date || !scheduleDate) {
+    return false;
+  }
+  
+  return ((date.year === scheduleDate.year) && (date.month === scheduleDate.month) &&
+    (date.date === scheduleDate.date) && (date.day === scheduleDate.day));
 }
 
 module.exports = {
@@ -118,4 +129,5 @@ module.exports = {
   transDayToWeek,
   transDateToDisplay,
   transMinsToTime,
+  is2DateEquals
 }

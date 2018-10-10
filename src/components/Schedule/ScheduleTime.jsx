@@ -10,20 +10,23 @@ const preCls = "schedule-time";
 
 class ScheduleTime extends React.Component {
   handleItemSelected = () => {
-    const updateIndex = (this.props.index === this.props.selectedIndex)
-      ? -1 : this.props.index;
-
-    if (this.props.updateTimeSelected) {
-      if(this.props.isAvailable) {
-        this.props.updateTimeSelected(updateIndex);
+    if (this.props.item !== this.props.scheduledTime) {
+      if (this.props.updateScheduleTime) {
+        if(this.props.isAvailable) {
+          this.props.updateScheduleTime(this.props.item);
+        }
+      }
+    } else {
+      if (this.props.clearScheduleTime) {
+        if(this.props.isAvailable) {
+          this.props.clearScheduleTime();
+        }
       }
     }
-
-    return;
   }
 
   canRenderSelected = () => {
-    if (this.props.index === this.props.selectedIndex) {
+    if (this.props.item === this.props.scheduledTime) {
       if (this.props.isAvailable) {
         return true;
       }
@@ -53,20 +56,23 @@ class ScheduleTime extends React.Component {
 
 ScheduleTime.propTypes = {
   item: PropTypes.number,
-  selectedIndex: PropTypes.number,
+  scheduledTime: PropTypes.number,
 }
 
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    selectedIndex: state.schedule.timeSelectedIndex,
+    scheduledTime: state.schedule.time,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateTimeSelected: (selectedIndex) => {
-      dispatch(Actions.updateTimeSelected(selectedIndex));
+    updateScheduleTime: (time) => {
+      dispatch(Actions.updateScheduleTime(time));
+    },
+    clearScheduleTime: () => {
+      dispatch(Actions.clearScheduleTime());
     },
   }
 }

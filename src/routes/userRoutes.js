@@ -11,16 +11,3 @@ export const
       PAGE_SELF           = "/tintu/myself",
       PAGE_NOTIF          = "/tintu/notification",
       PAGE_ORDER          = "/tintu/orders";
-
-// 带参数的页面
-export const routeServiceProduct = (storeId, productName) => {
-  return `${routeService(storeId)}/product/${productName}`;
-}
-
-export const routeService = (storeId) => {
-  return `${PAGE_INDEX}/service/store/${storeId}`;
-}
-
-export const routeProduct2Schedule = (curPath) => {
-  return `${curPath}/schedule/date`;
-}

@@ -9,11 +9,13 @@ import MyInfoPage from "../../pages/myinfo/MyInfoPage.jsx";
 import ScheduleDatePage from "../../pages/schedule/ScheduleDatePage.jsx";
 import ScheduleTimePage from "../../pages/schedule/ScheduleTimePage.jsx";
 import OrderAddOnsPage from "../../pages/orders/OrderAddOnsPage.jsx";
+import StoreChoosePage from "../../pages/store/StoreChoosePage.jsx";
 
 // 主页面标记对于的path以及page组件
 const pagePaths = {
   [routes.PAGE_ROOT]: AppNavBar,
   [routes.PAGE_INDEX]: WelcomePage,
+  [routes.PAGE_STORE_CHOOSE]: StoreChoosePage,
   [routes.PAGE_SERVE]: ServicePage,
   [routes.PAGE_PRODUCT]: ProductPage,
   [routes.PAGE_SCHEDULE_DATE]: ScheduleDatePage,

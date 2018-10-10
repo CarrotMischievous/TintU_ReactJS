@@ -11,7 +11,7 @@
 .schedule-page-header {
   display: flex;
   justify-content: center;
-  margin: .5em auto .5em;
+  margin: 0 auto .5em;
 }
 
 .schedule-page-header p {

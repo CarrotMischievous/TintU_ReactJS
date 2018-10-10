@@ -1,0 +1,52 @@
+.store-brief {
+  position: relative;
+  padding: 1em;
+  border-radius: 5px;
+  border: 1px solid #FC8531;
+  text-align: center;
+  box-sizing: border-box;
+  transition: background-color .5s, color .5s;
+}
+
+.store-brief p {
+  line-height: 1em;
+}
+
+.store-brief-name {
+  color: #FC8531;
+  margin: 0 auto .5em;
+}
+
+.store-brief-address {
+  color: #666;
+  font-size: .8em;
+  margin: 0 auto;
+}
+
+/* font awesome 样式 */
+.store-brief-arrow {
+  position: absolute;
+  top: calc((100% - 1em) / 2);
+}
+
+.store-brief-arrow.left {
+  left: .5em;
+}
+
+.store-brief-arrow.right {
+  right: .5em;
+}
+
+.store-brief .fa-inverse {
+  color: #FC8531;
+}
+
+/* 触摸特效 */
+.store-brief.touch {
+  background-color: #FC8531;
+}
+
+.store-brief.touch p,
+.store-brief.touch .fa-inverse {
+  color: white;
+}

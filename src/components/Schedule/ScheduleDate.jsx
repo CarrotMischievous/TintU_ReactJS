@@ -3,30 +3,34 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd-mobile';
 import PropTypes from "prop-types";
 import * as Actions from "../../store/actions.js";
-import { transDayToWeek } from "../../helper/DateCalculator.js";
+import { transDayToWeek, is2DateEquals } from "../../helper/DateCalculator.js";
 import "./styles/scheduledate.css";
 
 const preCls = "schedule-date";
 
 class ScheduleDate extends React.Component {
   handleItemSelected() {
-    const updateIndex = (this.props.index === this.props.selectedIndex)
-      ? -1 : this.props.index;
-
-    if (this.props.updateDateSelected) {
-      if(this.props.isAvailable) {
-        this.props.updateDateSelected(updateIndex);
+    if (!is2DateEquals(this.props.item, this.props.scheduleDate)) {
+      if (this.props.updateScheduleDate) {
+        if(this.props.isAvailable) {
+          this.props.updateScheduleDate(this.props.item);
+        }
+      }
+    } else {
+      if (this.props.clearScheduleDate) {
+        if(this.props.isAvailable) {
+          this.props.clearScheduleDate();
+        }
       }
     }
   }
 
   canRenderSelected() {
-    if (this.props.index === this.props.selectedIndex) {
+    if (is2DateEquals(this.props.item, this.props.scheduleDate)) {
       if (this.props.isAvailable) {
         return true;
       }
     }
-
     return false;
   }
 
@@ -54,20 +58,23 @@ class ScheduleDate extends React.Component {
 
 ScheduleDate.propTypes = {
   item: PropTypes.object,
-  selectedIndex: PropTypes.number,
+  scheduleDate: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    selectedIndex: state.schedule.dateSelectedIndex,
+    scheduleDate: state.schedule.date,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateDateSelected: (selectedIndex) => {
-      dispatch(Actions.updateDateSelected(selectedIndex));
+    updateScheduleDate: (date) => {
+      dispatch(Actions.updateScheduleDate(date));
+    },
+    clearScheduleDate: () => {
+      dispatch(Actions.clearScheduleDate());
     },
   }
 }

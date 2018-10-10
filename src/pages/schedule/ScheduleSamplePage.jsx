@@ -1,7 +1,6 @@
 import React from "react";
 import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import ScheduleSelector from "../../components/ScheduleSelector/ScheduleSelector.jsx";
-import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
 import "./styles/schedulepage.css";
 
 const preCls = "schedule-page";
@@ -11,10 +10,14 @@ export default function(ScheduleComponent) {
     render() {
       return (
         <div className={`${preCls} page-frame`}>
-          {this.props.children}
-          <StoreEntry storeId={this.props.storeId} />
+          {this.props.popup}
+          <StoreEntry />
           <ScheduleSelector>
-            <ProductSelector />
+            {
+              this.props.selectors.map((selector) => {
+                return selector;
+              })
+            }
           </ScheduleSelector>
           <div className={`${preCls}-header`}>
             <p>可预约</p>
@@ -26,7 +29,6 @@ export default function(ScheduleComponent) {
                 return (
                   <ScheduleComponent
                     key={index}
-                    index={index}
                     isAvailable={item.isAvailable}
                     item={item.entry} />
                 );

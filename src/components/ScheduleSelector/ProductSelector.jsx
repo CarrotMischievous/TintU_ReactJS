@@ -4,20 +4,26 @@ import * as Actions from "../../store/actions.js";
 import BaseSelector from "./BaseSelector.jsx";
 
 class ProductSelector extends React.Component {
+  componentWillMount() {
+    if (!this.props.product) {
+
+    }
+  }
+
   render() {
     return (
       <BaseSelector
         title={`已选择项目`}
-        content={this.props.productChName}
+        content={this.props.product.productChName}
       />
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
-    productChName: state.product.productChName,
+    product: state.product,
   };
 }
 
