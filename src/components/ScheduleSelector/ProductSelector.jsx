@@ -11,6 +11,7 @@ class ProductSelector extends React.Component {
   }
 
   render() {
+    // console.log(this.props);
     return (
       <BaseSelector
         title={`已选择项目`}

@@ -15,12 +15,19 @@ class ServicePage extends React.Component {
     // 通知Wrapper header的配置
     if (this.props.setHeaderConfiguration) {
       this.props.setHeaderConfiguration({
-        title: "①拍摄服务",
-        explain: "请选择需要预约的业务",
+        title: "拍摄服务",
+        explain: "请选择需要预约的业务类型",
       });
     }
 
     this.handleServiceItemSelected = this.handleServiceItemSelected.bind(this);
+  }
+
+  componentWillUpdate() {
+    /* 页面刷新则product重选 */
+    if (this.props.clearProduct) {
+      this.props.clearProduct();
+    }
   }
 
   handleServiceItemSelected(productName) {
@@ -148,6 +155,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updateProduct: (productName, productChName) => {
       dispatch(Actions.updateProduct(productName, productChName));
+    },
+    clearProduct: () => {
+      dispatch(Actions.clearProduct());
     },
   }
 }

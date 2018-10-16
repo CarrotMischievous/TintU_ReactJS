@@ -9,7 +9,12 @@ import "./styles/scheduledate.css";
 const preCls = "schedule-date";
 
 class ScheduleDate extends React.Component {
-  handleItemSelected() {
+  handleItemSelected = () => {
+    if (this.moved) {
+      this.moved = false;
+      return;
+    }
+
     if (!is2DateEquals(this.props.item, this.props.scheduleDate)) {
       if (this.props.updateScheduleDate) {
         if(this.props.isAvailable) {
@@ -23,6 +28,10 @@ class ScheduleDate extends React.Component {
         }
       }
     }
+  }
+
+  handleItemTouchMoved = () => {
+    this.moved = true;
   }
 
   canRenderSelected() {
@@ -42,7 +51,8 @@ class ScheduleDate extends React.Component {
     return (
       <div
         className={`${preCls} ${Selected} ${Available}`}
-        onTouchEnd={this.handleItemSelected.bind(this)}>
+        onTouchEnd={this.handleItemSelected}
+        onTouchMove={this.handleItemTouchMoved}>
         <div className={`${preCls}-upper`}>
           <p className={`${preCls}-month`}>{`${someday.month}月`}</p>
           <p className={`${preCls}-date`}>{someday.date}</p>

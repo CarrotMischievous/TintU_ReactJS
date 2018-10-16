@@ -1,0 +1,18 @@
+.order-addon-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-addon-page-addons {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-addon-page-title {
+  font-weight: bold;
+}
+
+.order-addon-page-notice {
+  color: #bbb;
+  margin: .5em auto 0;
+}

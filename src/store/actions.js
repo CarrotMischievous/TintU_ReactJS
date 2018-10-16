@@ -107,25 +107,25 @@ export const initSchedule = () => {
 
 // store information action types
 export const
-  UPDATE_STORE = "UPDATE_STORE",
-  CLEAR_STORE = "CLEAR_STORE";
+  UPDATE_STORE_INFO = "UPDATE_STORE_INFO",
+  CLEAR_STORE_INFO = "CLEAR_STORE_INFO";
 
-export const updateStore = (store) => {
+export const updateStoreInfo = (storeInfo) => {
   /* 存储到sessionStorage */
-  saveSessionAsJson("store", store);
+  saveSessionAsJson("storeInfo", storeInfo);
 
   return {
-    type: UPDATE_STORE,
-    store,
+    type: UPDATE_STORE_INFO,
+    storeInfo,
   }
 }
 
-export const clearStore = () => {
+export const clearStoreInfo = () => {
   /* 删除sessionStorage */
-  removeSessionData("store");
+  removeSessionData("storeInfo");
   
   return {
-    type: UPDATE_STORE,
+    type: CLEAR_STORE_INFO,
   }
 }
 

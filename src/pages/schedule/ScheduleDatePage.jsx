@@ -21,14 +21,13 @@ class ScheduleDatePage extends React.Component {
     /* 通知Wrapper header的配置 */
     if (this.props.setHeaderConfiguration) {
       this.props.setHeaderConfiguration({
-        title: "③预约日期",
-        explain: "请先选择合适的服务预约日期",
+        title: "预约日期",
+        explain: "请先选择合适的服务日期进行预约",
       });
     }
   }
 
   componentWillMount() {
-
     /* 计算当日起15天的日期信息 */
     const futureDays = calcFutureDays(new Date(), PLAN_DAYS);
 

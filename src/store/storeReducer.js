@@ -1,6 +1,6 @@
 import {
-  UPDATE_STORE,
-  CLEAR_STORE
+  UPDATE_STORE_INFO,
+  CLEAR_STORE_INFO
 } from "./actions.js";
 import { fetchSessionJson } from "../helper/sessionStorageHelper.js";
 
@@ -9,17 +9,17 @@ export default function (state, action) {
   /* 初始化 */
   if (!state) {
     /* state没值的情况从session里面优先尝试读取 */
-    const store = fetchSessionJson("store") || null;
+    const storeInfo = fetchSessionJson("storeInfo") || null;
 
-    //console.log(store);
-    state = store;
+    // console.log(storeInfo);
+    state = storeInfo;
   }
 
   /* 根据Type处理state */
   switch(action.type) {
-    case UPDATE_STORE:
-      return action.store;
-    case CLEAR_STORE:
+    case UPDATE_STORE_INFO:
+      return action.storeInfo;
+    case CLEAR_STORE_INFO:
       return null;
     default:
       return state;

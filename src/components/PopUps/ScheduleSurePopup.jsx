@@ -32,9 +32,9 @@ class ScheduleSurePopup extends React.Component {
         </div>
         <div className={`${preCls}-infos`}>
           <p>你选择的档期是</p>
-          <p>{schedule.product}</p>
+          <p>{schedule.product.productChName}</p>
           <p>{transDateToDisplay(schedule.date, schedule.time)}</p>
-          <p>{schedule.store.name}</p>
+          <p>{schedule.storeInfo.name}</p>
           <p>是否确认</p>
         </div>
         <AppFooter

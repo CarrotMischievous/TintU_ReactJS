@@ -24,8 +24,8 @@ class ScheduleTimePage extends React.Component {
     /* 通知Wrapper header的配置 */
     if (this.props.setHeaderConfiguration) {
       this.props.setHeaderConfiguration({
-        title: "④预约时间",
-        explain: "请继续选择合适的服务预约时间",
+        title: "预约时间",
+        explain: "请继续选择合适的服务时间段",
       });
     }
 
@@ -80,6 +80,11 @@ class ScheduleTimePage extends React.Component {
   }
 
   render() {
+    const date = this.props.scheduleDate || {};
+    const time = this.props.scheduleTime || -1;
+    const storeInfo = this.props.storeInfo || {};
+    const product = this.props.product || {};
+
     return (
       <ScheduleSamplePage
         selectors={[
@@ -98,17 +103,10 @@ class ScheduleTimePage extends React.Component {
             onPopUpHidden={this.handlePopUpHidden}
             onHandleScheduleSure={this.handleScheduleSure}
             schedule={{
-              date: {
-                year: 2018,
-                month: 10,
-                date: 9,
-                day: 2,
-              },
-              time: 990,
-              store: {
-                name: "南京玄武店",
-              },
-              product: "证件照",
+              date,
+              time,
+              storeInfo,
+              product,
             }}
           />
         }
@@ -123,6 +121,9 @@ const mapStateToProps = (state) => {
   //console.log(state);
   return {
     scheduleTime: state.schedule.time,
+    scheduleDate: state.schedule.date,
+    storeInfo: state.storeInfo,
+    product: state.product,
   };
 }
 

@@ -7,7 +7,7 @@ import { combineReducers } from 'redux';
 const reducer = combineReducers({
   personInfo: personInfoReducer,
   schedule: scheduleReducer,
-  store: storeReducer,
+  storeInfo: storeReducer,
   product: productReducer,
 });
 

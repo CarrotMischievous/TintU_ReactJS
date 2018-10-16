@@ -36,6 +36,7 @@ export default function(ScheduleComponent) {
             }
           </div>
           <p>{this.props.notice}</p>
+          <p>可以点击第二栏“已选择”项目返回对应页面进行重选</p>
         </div>
       );
     }

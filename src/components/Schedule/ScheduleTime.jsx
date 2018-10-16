@@ -10,6 +10,11 @@ const preCls = "schedule-time";
 
 class ScheduleTime extends React.Component {
   handleItemSelected = () => {
+    if (this.moved) {
+      this.moved = false;
+      return;
+    }
+    
     if (this.props.item !== this.props.scheduledTime) {
       if (this.props.updateScheduleTime) {
         if(this.props.isAvailable) {
@@ -23,6 +28,10 @@ class ScheduleTime extends React.Component {
         }
       }
     }
+  }
+
+  handleItemTouchMoved = () => {
+    this.moved = true;
   }
 
   canRenderSelected = () => {
@@ -44,6 +53,7 @@ class ScheduleTime extends React.Component {
       <div
         className={`${preCls} ${Selected} ${Available}`}
         onTouchEnd={this.handleItemSelected}
+        onTouchMove={this.handleItemTouchMoved}
       >
         <p className={`${preCls}-hour`}>
           {transMinsToTime(scheduleTime)}

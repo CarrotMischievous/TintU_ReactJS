@@ -60,6 +60,7 @@
   height: 1.15em;
   padding-left: 1.5em;
   margin: 0;
+  overflow: scroll;
 }
 
 /* 保证换行的时候p左端对齐 */

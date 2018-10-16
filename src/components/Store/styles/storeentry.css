@@ -5,16 +5,19 @@
   border-radius: 5px;
 }
 
-.store p {
-  margin: .5em;
-  line-height: 1.5em;
+.store-marker.fa-inverse {
+  color: #666;
 }
 
-.store p:first-child {
+.store-name {
+  margin: .5em;
+  line-height: 1.5em;
   color: #FC8531;
   font-weight: bolder;
 }
 
-.store p:last-child {
+.store-detail {
+  margin: .5em;
+  line-height: 1.5em;
   color: #666;
 }

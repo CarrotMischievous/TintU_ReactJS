@@ -1,66 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
-import * as Actions from "../../store/actions.js";
+import DivButton from "../../components/DivButton/DivButton.jsx";
 import "./styles/storebrief.css";
 
 const preCls = "store-brief";
 
 class StoreBrief extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      touched: false,
-    }
-  }
-
-  handleTouchStart = () => {
-    this.setState({
-      touched: true,
-    });
-  }
-
   handleTouchEnd = () => {
-    this.setState({
-      touched: false,
-    });
-
-  }
-
-  handleTouchCancel = () => {
-    this.setState({
-      touched: false,
-    });
+    if (this.props.onStoreSelected) {
+      this.props.onStoreSelected(this.props.storeInfo);
+    }
   }
 
   render() {
     return (
-      <div
-        className={`${preCls} ${this.state.touched ? "touch" : ""}`}
-        onTouchStart={this.handleTouchStart}
+      <DivButton
+        className={`${preCls}`}
         onTouchEnd={this.handleTouchEnd}
-        onTouchCancel={this.handleTouchCancel}
       >
         <i className={`${preCls}-arrow left fa fa-angle-left fa-inverse`} />
-        <p className={`${preCls}-name`}>{this.props.store.name}</p>
-        <p className={`${preCls}-address`}>{this.props.store.address}</p>
+        <p className={`${preCls}-name`}>{this.props.storeInfo.name}</p>
+        <p className={`${preCls}-address`}>{this.props.storeInfo.address}</p>
         <i className={`${preCls}-arrow right fa fa-angle-right fa-inverse`} />
-      </div>
+      </DivButton>
     );
   }
 }
 
 StoreBrief.propTypes = {
-  store: PropTypes.object,
+  storeInfo: PropTypes.object,
+  onStoreSelected: PropTypes.func,
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateStore: (store) => {
-      dispatch(Actions.updateStore(store));
-    },
-  }
-}
-
-export default connect(null, mapDispatchToProps)(StoreBrief);
+export default StoreBrief;

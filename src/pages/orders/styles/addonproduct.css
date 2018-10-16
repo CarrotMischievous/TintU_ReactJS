@@ -1,0 +1,102 @@
+.addon-product {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 90%;
+  margin: .5em auto;
+  border-radius: 5px;
+  border: 2px solid #FC8531;
+  text-align: center;
+}
+
+div.addon-product:first-child {
+  margin-top: 0;
+}
+
+.addon-product p {
+  line-height: 1em;
+}
+
+.addon-product-info {
+  display: flex;
+}
+
+.addon-product-baseinfo {
+  display: inline-block;
+}
+
+.addon-product-name {
+  font-weight: bolder;
+  color: #FC8531;
+  margin: .75em .5em 1em;
+}
+
+.addon-product-price {
+  margin: 1em .5em .75em;
+  color: #60BDA2;
+}
+
+.addon-product-imgframe {
+  display: inline-flex;
+  width: 4.5em;
+  flex-direction: column;
+  border-right: 2px solid #FC8531;
+}
+
+.addon-product-img {
+  display: block;
+  height: 4em;
+  margin: auto;
+  border-radius: 5px;
+}
+
+
+.addon-product-discount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addon-product-normal-price {
+  font-size: .8em;
+  color: #bbb;
+  text-decoration: line-through;
+  margin: 0;
+  margin-bottom: .2em;
+}
+
+.addon-product-reduction {
+  font-size: .8em;
+  padding: .25em;
+  border: 1px solid #60BDA2;
+  border-radius: 5px;
+  color: #60BDA2;
+  margin: 0;
+}
+
+.addon-product-choice {
+  display: flex;
+  flex-direction: column;
+  margin: auto 1em;
+}
+
+.addon-product-flag.fa-inverse {
+  color: #bbb;
+}
+
+/* 选中之后样式变化 */
+.chosed .addon-product-name,
+.chosed .addon-product-normal-price,
+.chosed .addon-product-flag.fa-inverse,
+.chosed .addon-product-price {
+  color: white;
+}
+
+.chosed .addon-product-reduction {
+  background-color: #60BDA2;
+  color: white;
+}
+
+.chosed.addon-product {
+  background-color: #FC8531;
+}

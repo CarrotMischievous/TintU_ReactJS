@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as Actions from "../../store/actions.js";
 import { PAGE_SCHEDULE_DATE } from "../../routes/userRoutes.js";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ProductBrief from "./ProductBrief.jsx";
@@ -18,8 +17,8 @@ class ProductPage extends React.Component {
     // 通知Wrapper header的配置
     if (this.props.setHeaderConfiguration) {
       this.props.setHeaderConfiguration({
-        title: "②证件照",
-        explain: "请仔细阅读拍摄服务说明",
+        title: "业务描述",
+        explain: "请仔细阅读拍摄服务具体说明",
       });
     }
 
@@ -45,12 +44,8 @@ class ProductPage extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  /* 退回到产品选择，需要product置空 */
+  /* 退回到产品选择 */
   handleReselectProduct() {
-    if (this.props.clearProductName) {
-      this.props.clearProductName();
-    }
-
     this.props.history.goBack();
   }
 
@@ -65,7 +60,7 @@ class ProductPage extends React.Component {
           productChName={`证件照`}
           productImage={require(`../../img/serviceitems/identification.png`)}
           productPrice={150}
-          productStore={`南京玄武店`}
+          productStore={this.props.storeInfo.name}
           imgBackgroundColor="#FADCBE"
         />
         <ProductItems
@@ -141,16 +136,9 @@ class ProductPage extends React.Component {
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    productName: state.product.productName,
+    product: state.product,
+    storeInfo: state.storeInfo,
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearProductName: (productName) => {
-      dispatch(Actions.clearProductName(productName));
-    },
-  }
-}
-
-export default withRouter(AppWrapper(connect(mapStateToProps, mapDispatchToProps)(ProductPage)));
+export default withRouter(AppWrapper(connect(mapStateToProps)(ProductPage)));

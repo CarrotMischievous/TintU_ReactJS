@@ -18,7 +18,7 @@ class WelcomePage extends React.Component {
     }
   }
 
-  handleStartAppoinment() {
+  handleStartAppoinment = () => {
     this.props.history.push(PAGE_STORE_CHOOSE);
   }
 
@@ -26,7 +26,7 @@ class WelcomePage extends React.Component {
     return (
       <div className="flex-container welcome-page page-frame">
         <Introduction className="intro-flex" />
-        <CopyRight onStartAppointment={this.handleStartAppoinment.bind(this)}/>
+        <CopyRight onStartAppointment={this.handleStartAppoinment}/>
       </div>
     );
   }
