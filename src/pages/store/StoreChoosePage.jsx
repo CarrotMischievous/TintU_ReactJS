@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Actions from "../../store/actions.js";
 import { PAGE_SERVE } from "../../routes/userRoutes.js";
+import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import StoreBrief from "./StoreBrief.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import "./styles/storechoosepage.css";
@@ -35,7 +36,7 @@ class StoreChoosePage extends React.Component {
     }
 
     /* 选择产品 */
-    this.props.history.push(PAGE_SERVE);
+    routeTraverseWithDelay(this.props.history, PAGE_SERVE);
   }
 
   render() {

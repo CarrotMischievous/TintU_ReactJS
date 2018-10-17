@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import DivButton from "../../components/DivButton/DivButton.jsx";
 import "./styles/serviceitem.css";
 
 const imgSrc = (productName) => {
@@ -8,30 +9,22 @@ const imgSrc = (productName) => {
 
 class ServiceItem extends React.Component {
   handleChooseServiceItem() {
-    if (!this.chooseMoved) {
-      if (this.props.onSelected) {
-        this.props.onSelected(this.props.productName);
-      }
+    if (this.props.onSelected) {
+      this.props.onSelected(this.props.productName);
     }
-    this.chooseMoved = false;
-  }
-
-  handleChooseServiceMove() {
-    this.chooseMoved = true;
   }
 
   render() {
     return (
-      <div
+      <DivButton
         className="service-item"
         style={this.props.style}
-        onTouchEnd={this.handleChooseServiceItem.bind(this)}
-        onTouchMove={this.handleChooseServiceMove.bind(this)}>
+        onTouchEnd={this.handleChooseServiceItem.bind(this)}>
         <div className="ser-item-imgframe">
           <img className="ser-item-img" src={imgSrc(this.props.productName)} alt="service" />
         </div>
         <span className="ser-item-title">{this.props.title}</span>
-      </div>
+      </DivButton>
     );
   }
 }

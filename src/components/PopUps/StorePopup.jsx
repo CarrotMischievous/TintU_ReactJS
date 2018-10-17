@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import DivButton from "../../components/DivButton/DivButton.jsx";
 import InfoPopupWrapper from "./InfoPopupWrapper.jsx";
 import "./styles/storepopup.css";
 
 const preCls = "store-popup";
 
 class StorePopup extends React.Component {
-  handlePopupQuit = () => {
-    if (this.props.onHandlePopupQuit) {
-      this.props.onHandlePopupQuit(); 
-    }
-  }
-
   render() {
     const isAnimation = this.props.isAnimation;
     const fadeStyle = !this.props.isHidden ? "fadein" : (isAnimation ? "fadeout" : "");
@@ -19,10 +14,11 @@ class StorePopup extends React.Component {
 
     return (
       <div className={`${preCls} ${fadeStyle}`}>
-        <i
-          className={`${preCls}-close fa fa-close fa-fw fa-inverse fa-2x`}
-          onTouchEnd={this.handlePopupQuit}
-        />
+        <DivButton onTouchEnd={this.props.onHandlePopupQuit}>
+          <i
+            className={`${preCls}-close fa fa-close fa-fw fa-inverse fa-2x`}
+          />
+        </DivButton>
         <div className={`${preCls}-photo`}>
           <i className="fa fa-map fa-fw fa-inverse fa-3x"/>
           <p>{store.name}</p>

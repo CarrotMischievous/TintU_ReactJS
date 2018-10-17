@@ -30,6 +30,12 @@
   color: #FC8531;
 }
 
+.app-footer-button.am-button-active:first-child:nth-last-child(2) {
+  background-color: #FC8531;
+  opacity: .5;
+  color: white;
+}
+
 .app-footer-button:first-child:nth-last-child(2),
 .app-footer-button:first-child:nth-last-child(2) ~ a {
   margin: 0 5%;
@@ -38,4 +44,10 @@
 
 .app-footer-button:first-child:nth-last-child(1) {
   width: 50%;
+}
+
+.app-footer-button.am-button-active:first-child:nth-last-child(1),
+.app-footer-button.am-button-active:last-child:nth-child(2) {
+  background-color: #FC8531;
+  opacity: .5;
 }

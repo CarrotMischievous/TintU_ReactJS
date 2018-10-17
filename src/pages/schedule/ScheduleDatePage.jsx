@@ -6,6 +6,7 @@ import ScheduleSample from "./ScheduleSamplePage.jsx";
 import ScheduleDate from "../../components/Schedule/ScheduleDate.jsx";
 import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
+import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import { PAGE_SCHEDULE_TIME } from "../../routes/userRoutes.js";
 import { calcFutureDays, is2DateEquals } from "../../helper/DateCalculator.js";
 
@@ -50,7 +51,7 @@ class ScheduleDatePage extends React.Component {
     if (!is2DateEquals(prevProps.scheduledDate, this.props.scheduledDate)) {
       /* item被点击了一次，如果是选中了一个合理值则直接跳转到时间页面 */
       if (this.props.scheduledDate) {
-        this.props.history.push(PAGE_SCHEDULE_TIME);
+        routeTraverseWithDelay(this.props.history, PAGE_SCHEDULE_TIME);
       }
     }
   }

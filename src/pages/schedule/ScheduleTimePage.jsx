@@ -8,6 +8,7 @@ import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
 import DateSelector from "../../components/ScheduleSelector/DateSelector.jsx";
 import * as Actions from "../../store/actions.js";
+import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import { PAGE_ORDER_ADDON } from "../../routes/userRoutes.js";
 import { calcAllDayTimeFragment } from "../../helper/DateCalculator.js";
 
@@ -76,7 +77,7 @@ class ScheduleTimePage extends React.Component {
   }
 
   handleScheduleSure = () => {
-    this.props.history.push(PAGE_ORDER_ADDON);
+    routeTraverseWithDelay(this.props.history, PAGE_ORDER_ADDON);
   }
 
   render() {

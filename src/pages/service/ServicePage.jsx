@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Actions from "../../store/actions.js";
 import { PAGE_PRODUCT } from "../../routes/userRoutes.js";
+import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ServiceFrame from "../../components/ServiceItem/ServiceFrame.jsx";
@@ -39,7 +40,7 @@ class ServicePage extends React.Component {
       });
     }
 
-    this.props.history.push(PAGE_PRODUCT);
+    routeTraverseWithDelay(this.props.history, PAGE_PRODUCT);
   }
 
   render() {

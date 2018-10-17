@@ -2,11 +2,13 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PAGE_SCHEDULE_DATE } from "../../routes/userRoutes.js";
+import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ProductBrief from "./ProductBrief.jsx";
 import ProductItems from "./ProductItems.jsx";
 import ProductSample from "./ProductSample.jsx";
 import ProductShow from "./ProductShow.jsx";
+import { routeGoBackWithDelay, routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import { ITEM_TEMPLATE, ITEM_STYLE, STYLES } from "../../helper/ServiceConstants.js";
 import "./styles/productpage.css";
 
@@ -46,22 +48,24 @@ class ProductPage extends React.Component {
 
   /* 退回到产品选择 */
   handleReselectProduct() {
-    this.props.history.goBack();
+    routeGoBackWithDelay(this.props.history);
   }
 
   handleNextStep() {
-    this.props.history.push(PAGE_SCHEDULE_DATE);
+    routeTraverseWithDelay(this.props.history, PAGE_SCHEDULE_DATE);
   }
 
   render() {
+    const storeInfo = this.props.storeInfo || {};
+    const product = this.props.product || {};
+
     return (
       <div className="service-detail-page flex-container page-frame">
+        <StoreEntry />
         <ProductBrief
-          productChName={`证件照`}
-          productImage={require(`../../img/serviceitems/identification.png`)}
-          productPrice={150}
-          productStore={this.props.storeInfo.name}
-          imgBackgroundColor="#FADCBE"
+          product={product}
+          productStore={storeInfo.name}
+          imgBackgroundColor="#DAE9AC"
         />
         <ProductItems
           productItems={[

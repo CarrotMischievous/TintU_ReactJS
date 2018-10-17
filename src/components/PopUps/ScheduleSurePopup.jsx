@@ -8,18 +8,6 @@ import "./styles/schedulesurepopup.css";
 const preCls = "schedule-popup";
 
 class ScheduleSurePopup extends React.Component {
-  handlePopupQuit = () => {
-    if (this.props.onHandlePopupQuit) {
-      this.props.onHandlePopupQuit(); 
-    }
-  }
-
-  handleScheduleSure = () => {
-    if (this.props.onHandleScheduleSure) {
-      this.props.onHandleScheduleSure();
-    }
-  }
-
   render() {
     const isAnimation = this.props.isAnimation;
     const fadeStyle = !this.props.isHidden ? "fadein" : (isAnimation ? "fadeout" : "");
@@ -42,11 +30,11 @@ class ScheduleSurePopup extends React.Component {
             items:[
               {
                 title: "取消",
-                onItemClicked: this.handlePopupQuit,
+                onItemClicked: this.props.onHandlePopupQuit,
               },
               {
                 title: "确认",
-                onItemClicked: this.handleScheduleSure,
+                onItemClicked: this.props.onHandleScheduleSure,
               },
             ]
           }

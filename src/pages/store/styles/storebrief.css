@@ -5,7 +5,7 @@
   border: 1px solid #FC8531;
   text-align: center;
   box-sizing: border-box;
-  transition: background-color .5s, color .5s;
+  transition: background-color .2s, color .2s;
 }
 
 .store-brief p {

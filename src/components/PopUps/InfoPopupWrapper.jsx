@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import DivButton from "../../components/DivButton/DivButton.jsx";
 import "./styles/infopopupwrapper.css";
 
 const preCls = "popup-shield";
@@ -14,6 +15,20 @@ export default function InfoPopupWrapper(WrapComponent) {
       if (this.props.isHidden) {
         this.popUpInnerHidden = false;
       }
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if (typeof nextProps.isHidden !== "undefined" && !nextProps.isHidden) {
+        /* 禁止滑动 */
+        document.addEventListener('touchmove', this.handlePopUpMove, {passive: false});
+      } else {
+        /* 恢复滑动 */
+        document.removeEventListener('touchmove', this.handlePopUpMove, {passive: false});
+      }
+    }
+
+    handlePopUpMove = (event) => {
+      event.preventDefault();
     }
 
     handleTouchLayerToQuit = () => {
@@ -45,7 +60,7 @@ export default function InfoPopupWrapper(WrapComponent) {
 
       return (
         <div className={`${preCls}-split ${hiddenStyle}`}>
-          <div
+          <DivButton
             className={`${preCls}`}
             onTouchEnd={this.handleTouchLayerToQuit}
           />

@@ -7,6 +7,7 @@
   height: calc(4em + 2px);
   margin-top: 1em;
   width: 45%;
+  transition: box-shadow .2s;
 }
 
 .ser-item-imgframe {
@@ -31,4 +32,8 @@
   display: inline-block;
   margin: auto;
   color: #666;
+}
+
+.service-item.touch {
+  box-shadow: 3px 3px 5px #FC8531;
 }

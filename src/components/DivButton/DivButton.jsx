@@ -10,8 +10,21 @@ class DivButton extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    //console.log(nextProps);
+    /* 外部可以更新一下内部的state给刷成不是touched */
+    if (false === nextProps.isChosed &&
+        this.state.touched) {
+      this.setState({
+        touched: false
+      });
+    }
+  }
+
   handleTouchStart = () => {
     this.moved = false;
+
+    /* 原来为touch则清空，*/
     this.setState({
       touched: true,
     });
@@ -30,11 +43,10 @@ class DivButton extends React.Component {
   }
 
   handleTouchEnd = () => {
-    this.setState({
-      touched: false,
-    });
-
     if (this.moved) {
+      this.setState({
+        touched: false,
+      });
       this.moved = false;
       return;
     }
@@ -55,9 +67,14 @@ class DivButton extends React.Component {
   }
 
   render() {
+    const combinedClassName = this.props.className ? {
+      className: `${this.props.className || ""}${this.state.touched ? " touch" : ""}`
+    } : {};
+
     return (
       <div
-        className={`${this.props.className} ${this.state.touched ? "touch" : ""}`}
+        style={this.props.style}
+        {...combinedClassName}
         onTouchStart={this.handleTouchStart}
         onTouchEnd={this.handleTouchEnd}
         onTouchCancel={this.handleTouchCancel}
