@@ -23,11 +23,13 @@ class StoreChoosePage extends React.Component {
     }
   }
 
-  componentWillUpdate() {
+  componentWillMount() {
     /* 第一次挂载的时候store需要清空 */
     if (this.props.clearStoreInfo) {
       this.props.clearStoreInfo();
     }
+
+    /* 从服务器获取当前地区所有门店信息 */
   }
 
   handleStoreSelected = (storeInfo) => {

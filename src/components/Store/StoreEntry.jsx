@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { PAGE_STORE_CHOOSE } from "../../routes/userRoutes.js";
-import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
+import DivButton from "../../components/DivButton/DivButton.jsx";
+import { PAGE_INDEX } from "../../routes/userRoutes.js";
+import { routeTraverse } from "../../helper/RouteHelper.js";
 import StorePopup from "../../components/PopUps/StorePopup.jsx";
 import "./styles/storeentry.css";
 
@@ -20,7 +21,7 @@ class StoreEntry extends React.Component {
 
   componentWillMount() {
     if (!this.props.storeInfo) {
-      routeTraverseWithDelay(this.props.history, PAGE_STORE_CHOOSE);
+      routeTraverse(this.props.history, PAGE_INDEX);
     }
   }
 
@@ -47,10 +48,11 @@ class StoreEntry extends React.Component {
           isHidden={this.state.isPopUpHidden}
           onPopUpHidden={this.handleStoreClosed}
         />
-        <p
-          className={`${preCls}-detail`}
-          onTouchEnd={this.handleStoreInfo}
-        ><i className="fa fa-map-marker fa-inverse" />门店信息</p>
+        <DivButton 
+          onTouchEnd={this.handleStoreInfo}>
+          <p className={`${preCls}-detail`}
+          ><i className="fa fa-map-marker fa-inverse" />门店信息</p>
+        </DivButton>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
-import fetch from "node-fetch";
+import UserFetcher from "../../server/UserFetcher.js";
 import InfoTextInput from "../../components/UserInput/InfoTextInput.jsx";
 import InfoTelephone from "../../components/UserInput/InfoTelephone.jsx";
 import InfoCheckBox from "../../components/UserInput/InfoCheckBox.jsx";
@@ -10,38 +10,17 @@ import { helpGeneraStyle, helpGetWidthByPer } from "../../helper/cssStyles.js";
 import * as Actions from "../../store/actions.js";
 import "./styles/personalInfo.css";
 
-const getPersonInfoUrl = "http://192.168.0.176:9001/personInfo/user/18512542541";
-
 class PersonalInfo extends React.Component {
   // 组件刷新需要获取Server端的用户信息
   componentWillMount() {
-    let errorState = false;
-
-    fetch(getPersonInfoUrl, {
-      method: 'GET',
-    }).then((response) => {
-      if(200 !== response.status){
-        errorState = true;
-      }
-      return response.json();
-    }).then((data) => {
-      if(errorState){
-        console.log("存在一个问题：" + data.error);
-        return;
-      }
-      //console.log("data", data);
-      this.handleServerData.apply(this, data);
-    }).catch((err) => {
-      console.log(err);
-    });
+    UserFetcher.fetchByPhone("18512542541", this.handleServerData);
   }
 
   // 从Server获取数据通过redux刷新
-  handleServerData(user) {
-    this.handleUserNameChange(user.name);
-    this.handleCheckBoxSelected(user.sex);
-    this.handleUserEmailChange(user.email);
-    this.handleUserTelephoneChange(user.phone);
+  handleServerData = (serverUser) => {
+    if (this.props.updateUser) {
+      this.props.updateUser(serverUser[0]);
+    }
   }
 
   // 姓名感知
@@ -87,25 +66,26 @@ class PersonalInfo extends React.Component {
   }
 
   render() {
-    const noneStyle = this.props.vCodeApplied ? {} : {
+    const noneStyle = this.props.userInfo.vCodeApplied ? {} : {
       display: "none",
     };
+    const userInfo = this.props.userInfo;
 
     return (
       <div className="person-infos">
         <InfoTextInput
           definedStyle={helpGetWidthByPer("50%")}
           title="你的名字"
-          content={[
-            "userName"
+          contents={[
+            userInfo.user.name
           ]}
           onTextChanged={this.handleUserNameChange.bind(this)}
         />
         <InfoCheckBox
           definedStyle={helpGetWidthByPer("50%")}
           title="你的性别"
-          content={[
-            "userSex"
+          contents={[
+            userInfo.user.sex
           ]}
           leftCheck={{
             title: "女士"
@@ -118,27 +98,28 @@ class PersonalInfo extends React.Component {
         <InfoTelephone
           definedStyle={helpGetWidthByPer("70%")}
           title="你的手机号"
-          content={[
-            "userPhone"
+          contents={[
+            userInfo.user.phone
           ]}
           onIdentityCodeApply={this.handleVCodeApply.bind(this)}
           onTextChanged={this.handleUserTelephoneChange.bind(this)} />
         <InfoVerificationCode
           definedStyle={helpGeneraStyle(helpGetWidthByPer("30%"), noneStyle)}
           title="验证码"
-          content={[
-            "verificationCode"
+          contents={[
+            userInfo.verificationCode
           ]}
           onTextChanged={this.handleVerificationCodeChange.bind(this)}
         />
         <InfoTextInput
           definedStyle={helpGetWidthByPer("100%")}
           title="你的邮箱"
-          content={[
-            "userEmail"
+          contents={[
+            userInfo.user.email
           ]}
           onTextChanged={this.handleUserEmailChange.bind(this)}
         />
+        <p className="person-infos-notice">修改信息需要手机验证码<br/>获取并输入正确验证码后点击保存</p>
       </div>
     );
   }
@@ -151,12 +132,15 @@ PersonalInfo.propTypes = {
 const mapStateToProps = (state) => {
   //console.log(state);
   return {
-    vCodeApplied: state.personInfo.vCodeApplied,
+    userInfo: state.userInfo,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateUser: (user) => {
+      dispatch(Actions.updateUser(user));
+    },
     updateUserSex: (sex) => {
       dispatch(Actions.updateUserSex(sex));
     },

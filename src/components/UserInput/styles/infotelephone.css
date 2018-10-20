@@ -8,7 +8,6 @@
   line-height: calc(3em + 4px - 1px);
   background-color: #FC8531;
   color: white;
-  transform: translateX(-2px);
   font-size: 1em;
 }
 
@@ -18,4 +17,12 @@
 
 .telephone-input {
   width: 65%;
+}
+
+.telephone-apply-button.am-button-disabled {
+  background-color: #ddd;
+}
+
+.telephone-apply-button.am-button-disabled:before {
+  border-color: purple;
 }

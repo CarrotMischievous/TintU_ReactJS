@@ -59,11 +59,9 @@ class ScheduleDatePage extends React.Component {
   render() {
     return (
       <ScheduleSamplePage
+        {...this.props}
         selectors={[
-          (<ProductSelector
-            key="product"
-            onSelectedItemNone={undefined}
-            onChangeSelectedItem={undefined} />),
+          (<ProductSelector key="product"/>),
         ]}
         scheduleItems={this.scheduleItems}
         notice={`可预约14天内的档期，新一天的档期于每日10点开放`} />

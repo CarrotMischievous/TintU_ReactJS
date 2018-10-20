@@ -1,11 +1,15 @@
 import React from "react";
-import StoreEntry from "../../components/Store/StoreEntry.jsx";
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ScheduleSelector from "../../components/ScheduleSelector/ScheduleSelector.jsx";
 import ProductSelector from "../../components/ScheduleSelector/ProductSelector.jsx";
 import DateSelector from "../../components/ScheduleSelector/DateSelector.jsx";
 import TimeSelector from "../../components/ScheduleSelector/TimeSelector.jsx";
-import AddOnProduct from "./AddOnProduct.jsx";
+import AddOnProduct from "../../components/Product/AddOnProduct.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
+import * as Actions from "../../store/actions.js";
+import { PAGE_ORDER_CONFIRM } from "../../routes/userRoutes.js";
+import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import "./styles/orderaddonspage.css";
 
 const preCls = "order-addon-page";
@@ -34,48 +38,42 @@ class OrderAddOnsPage extends React.Component {
       });
     }
 
-    /* 默认一个附加产品都木有 */
-    this.addOns = [];
+    /* 配置storeEntry */
+    if (this.props.setStoreEntry) {
+      this.props.setStoreEntry();
+    }
   }
 
   componentsWillUpdate() {
-    /* 页面刷新清空记录 */
-    this.addOns = [];
+    if (this.props.clearChosedAddons) {
+      this.props.clearChosedAddons();
+    }
   }
 
   handleAddonsNext = () => {
-    alert(this.addOns);
+    routeTraverseWithDelay(this.props.history, PAGE_ORDER_CONFIRM);
   }
 
   handleAddonChosed = (index, chosed) => {
     if (chosed) {
-      this.addOns.push(index);
+      if (this.props.updateChosedAddons) {
+        this.props.updateChosedAddons(index);
+      }
     } else {
-      const position = this.addOns.indexOf(index);
-      if (-1 !== position) {
-        this.addOns.splice(position, 1);
+      if (this.props.deleteChosedAddons) {
+        this.props.deleteChosedAddons(index);
       }
     }
-    console.log(this.addOns, index, chosed);
+    //console.log(this.props.chosedAddons, index, chosed);
   }
 
   render() {
     return (
       <div className={`${preCls} page-frame`}>
-        <StoreEntry storeId={0} />
         <ScheduleSelector>
-          <ProductSelector
-            key="product"
-            onSelectedItemNone={undefined}
-            onChangeSelectedItem={undefined} />
-          <DateSelector
-            key="date"
-            onSelectedItemNone={undefined}
-            onChangeSelectedItem={undefined} />
-          <TimeSelector
-            key="time"
-            onSelectedItemNone={undefined}
-            onChangeSelectedItem={undefined} />
+          <ProductSelector key="product" />
+          <DateSelector key="date" />
+          <TimeSelector key="time" />
         </ScheduleSelector>
         <p className={`${preCls}-title`}>可附加项目</p>
         <div className={`${preCls}-addons`}>
@@ -92,20 +90,20 @@ class OrderAddOnsPage extends React.Component {
           <AddOnProduct
             index={2}
             addOnProduct={{
-              productName: "identification",
-              productChName: "证件照",
-              price: 150,
-              discount: 30,
+              productName: "class",
+              productChName: "班级照",
+              price: 300,
+              discount: 60,
             }}
             onAddonChosed={this.handleAddonChosed}
           />
           <AddOnProduct
             index={3}
             addOnProduct={{
-              productName: "identification",
-              productChName: "证件照",
-              price: 150,
-              discount: 30,
+              productName: "portraits",
+              productChName: "形象照",
+              price: 120,
+              discount: 20,
             }}
             onAddonChosed={this.handleAddonChosed}
           />
@@ -116,4 +114,25 @@ class OrderAddOnsPage extends React.Component {
   }
 }
 
-export default AppWrapper(OrderAddOnsPage);
+const mapStateToProps = (state) => {
+  //console.log(state.order.chosedAddons);
+  return {
+    chosedAddons: state.order.chosedAddons,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateChosedAddons: (addon) => {
+      dispatch(Actions.updateChosedAddons(addon));
+    },
+    deleteChosedAddons: (addon) => {
+      dispatch(Actions.deleteChosedAddons(addon));
+    },
+    clearChosedAddons: () => {
+      dispatch(Actions.clearChosedAddons());
+    },
+  }
+}
+
+export default withRouter(AppWrapper(connect(mapStateToProps, mapDispatchToProps)(OrderAddOnsPage)));

@@ -10,6 +10,7 @@
 
 .store-name {
   margin: .5em;
+  margin-left: 1em;
   line-height: 1.5em;
   color: #FC8531;
   font-weight: bolder;
@@ -17,6 +18,7 @@
 
 .store-detail {
   margin: .5em;
+  margin-right: 1em;
   line-height: 1.5em;
   color: #666;
 }

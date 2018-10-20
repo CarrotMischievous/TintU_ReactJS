@@ -1,4 +1,5 @@
 import React from "react";
+import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import AppFooter from "../../components/AppFooter/AppFooter.jsx";
 import "./styles/appwrapper.css";
@@ -12,16 +13,23 @@ export default function AppWrapper(WrappedComponent) {
       this.state = {
         headerConf: {},
         footerConf: {},
+        storeEntry: false,
       }
     }
 
-    handleAppHeaderConfiguration(headerConf) {
+    handleStoreEntry = () => {
+      this.setState({
+        storeEntry: true,
+      });
+    }
+
+    handleAppHeaderConfiguration = (headerConf) => {
       this.setState({
         headerConf
       });
     }
 
-    handleAppFooterConfiguration(footerConf) {
+    handleAppFooterConfiguration = (footerConf) => {
       this.setState({
         footerConf
       });
@@ -34,10 +42,12 @@ export default function AppWrapper(WrappedComponent) {
       return (
         <div className="app-content">
           <AppHeader headerConf={this.state.headerConf} />
+          {this.state.storeEntry ? <StoreEntry /> : ""}
           <WrappedComponent
             {...this.props}
-            setHeaderConfiguration={this.handleAppHeaderConfiguration.bind(this)}
-            setFooterConfiguration={this.handleAppFooterConfiguration.bind(this)} />
+            setHeaderConfiguration={this.handleAppHeaderConfiguration}
+            setFooterConfiguration={this.handleAppFooterConfiguration}
+            setStoreEntry={this.handleStoreEntry} />
           {hasFooter ? <AppFooter footerConf={this.state.footerConf} /> : ""}
         </div>
       );

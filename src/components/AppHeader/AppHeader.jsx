@@ -8,12 +8,13 @@ class AppHeader extends React.Component {
   render() {
     const urlTitle = this.props.headerConf.title || "";
     const urlExplain = this.props.headerConf.explain || "";
-    const classNameExp = urlExplain ? "app-header-title-exp" : "";
+    const noheader = !this.props.headerConf.title && !this.props.headerConf.explain ? " noheader" : "";
+    const classNameExp = urlExplain ? " app-header-title-exp" : "";
 
     return (
       <div className="app-header">
         <img className="app-header-img" src={logo} alt="logo" />
-        <div className={`app-header-title ${classNameExp}`}>
+        <div className={`app-header-title${noheader}${classNameExp}`}>
           <span className="app-header-content">{urlTitle}</span>
           <span className="app-header-explain">{urlExplain}</span>
         </div>

@@ -16,9 +16,29 @@ class InfoTelephone extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    //console.log(nextProps.text);
+    const nextText = nextProps.text[0] || "";
+    this.validateVerificationCode(nextText.length);
+  }
+
   handleGetIdentityCode() {
     if (this.props.onIdentityCodeApply) {
       this.props.onIdentityCodeApply();
+    }
+  }
+
+  /* 联动验证码按钮可激活 */
+  validateVerificationCode = (length) => {
+    // 手机号码满足11位才允许发送验证码
+    if (PHONE_LENGTH === length) {
+      this.setState({
+        isPhoneInvalid: true,
+      });
+    } else {
+      this.setState({
+        isPhoneInvalid: false,
+      });
     }
   }
 
@@ -36,16 +56,7 @@ class InfoTelephone extends React.Component {
       this.props.onTextChanged(text);
     }
 
-    // 手机号码满足11位才允许发送验证码
-    if (PHONE_LENGTH === text.length) {
-      this.setState({
-        isPhoneInvalid: true,
-      });
-    } else {
-      this.setState({
-        isPhoneInvalid: false,
-      });
-    }
+    this.validateVerificationCode(text.length);
   }
 
   render() {

@@ -3,10 +3,6 @@
   margin: calc((3em + 4px - 2.25em * 1.15) / 2) 0;
 }
 
-.icheckbox-item-checked {
-  font-weight: bold;
-}
-
 .icheckbox-item {
   opacity: .5; 
 }

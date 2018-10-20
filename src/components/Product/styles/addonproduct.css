@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 90%;
   margin: .5em auto;
   border-radius: 5px;
   border: 2px solid #FC8531;
@@ -28,24 +27,22 @@ div.addon-product:first-child {
 .addon-product-name {
   font-weight: bolder;
   color: #FC8531;
-  margin: .75em .5em 1em;
+  margin: .25em;
 }
 
 .addon-product-price {
-  margin: 1em .5em .75em;
+  margin: .25em;
   color: #60BDA2;
 }
 
 .addon-product-imgframe {
   display: inline-flex;
-  width: 4.5em;
   flex-direction: column;
-  border-right: 2px solid #FC8531;
 }
 
 .addon-product-img {
   display: block;
-  height: 4em;
+  height: 3.5em;
   margin: auto;
   border-radius: 5px;
 }

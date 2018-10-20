@@ -17,13 +17,15 @@ export default function InfoPopupWrapper(WrapComponent) {
       }
     }
 
+    componentWillUnmount() {
+      /* 恢复滑动 */
+      document.removeEventListener('touchmove', this.handlePopUpMove, {passive: false});
+    }
+
     componentWillReceiveProps(nextProps) {
       if (typeof nextProps.isHidden !== "undefined" && !nextProps.isHidden) {
         /* 禁止滑动 */
         document.addEventListener('touchmove', this.handlePopUpMove, {passive: false});
-      } else {
-        /* 恢复滑动 */
-        document.removeEventListener('touchmove', this.handlePopUpMove, {passive: false});
       }
     }
 
@@ -36,6 +38,9 @@ export default function InfoPopupWrapper(WrapComponent) {
       if (this.props.onPopUpHidden) {
         this.props.onPopUpHidden();
       }
+
+      /* 恢复滑动 */
+      document.removeEventListener('touchmove', this.handlePopUpMove, {passive: false});
 
       /* 组件变成内部控制弹窗隐藏，更改css样式，由css动画淡出 */
       this.popUpInnerHidden = true;

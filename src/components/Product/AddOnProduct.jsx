@@ -53,7 +53,7 @@ class AddOnProduct extends React.Component {
           <p className={`${preCls}-reduction`}>{`省${addOnProduct.discount}元`}</p>
         </div>
         <div className={`${preCls}-choice`}>
-          <i className={`${preCls}-flag fa fa-check-square-o fa-2x fa-inverse`} />
+          <i className={`${preCls}-flag fa fa-check-square-o fa-lg fa-inverse`} />
         </div>
       </DivButton>
     );

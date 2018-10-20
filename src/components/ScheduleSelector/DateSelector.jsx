@@ -12,6 +12,7 @@ class DateSelector extends React.Component {
         title={`日期`}
         content={transDateToDisplay(this.props.scheduledDate)}
         reselectRoute={PAGE_SCHEDULE_DATE}
+        reselectData={this.props.scheduledDate}
       />
     );
   }

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Modal } from 'antd-mobile';
 import { withRouter } from 'react-router-dom';
+import { routeTraverse } from "../../helper/RouteHelper.js";
 import DivButton from "../../components/DivButton/DivButton.jsx";
 import "./styles/baseselector.css";
 
@@ -14,6 +15,13 @@ class BaseSelector extends React.Component {
 
     this.state = {
       isSelectorCanceled: false,
+    }
+  }
+
+  componentWillMount() {
+    //console.log(this.props);
+    if (typeof this.props.reselectData === "undefined" || null === this.props.reselectData) {
+      routeTraverse(this.props.history, this.props.reselectRoute);
     }
   }
 

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as Actions from "../../store/actions.js";
 import { PAGE_PRODUCT } from "../../routes/userRoutes.js";
 import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
-import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ServiceFrame from "../../components/ServiceItem/ServiceFrame.jsx";
 import "./styles/servicepage.css";
@@ -19,6 +18,11 @@ class ServicePage extends React.Component {
         title: "拍摄服务",
         explain: "请选择需要预约的业务类型",
       });
+    }
+
+    /* 配置storeEntry */
+    if (this.props.setStoreEntry) {
+      this.props.setStoreEntry();
     }
 
     this.handleServiceItemSelected = this.handleServiceItemSelected.bind(this);
@@ -46,7 +50,6 @@ class ServicePage extends React.Component {
   render() {
     return (
       <div className="service-page flex-container page-frame">
-        <StoreEntry />
         <ServiceFrame
           title="棚拍服务"
           frameStyle={{backgroundColor: "#FADCBE"}}

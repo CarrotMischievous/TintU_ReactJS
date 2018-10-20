@@ -1,12 +1,12 @@
 .app-header {
-  margin: 1em;
-  margin-bottom: 0;
+  margin: .5em;
+  margin-top: 1em;
 }
 
 .app-header-img {
   display: block;
   margin: auto;
-  height: 3em;
+  height: 2.5em;
 }
 
 .app-header-title {
@@ -19,7 +19,7 @@
 }
 
 .app-header-title-exp {
-  font-size: 1em;
+  font-size: .8em;
   margin: calc(.75em - 1px) 0;
 }
 
@@ -41,4 +41,8 @@
   font-size: 1em;
   color: #ddd;
   width: 100vw;
+}
+
+.app-header-title.noheader {
+  display: none;
 }

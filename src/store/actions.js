@@ -2,14 +2,34 @@ import {
   removeSessionData,
   saveSessionAsJson
 } from "../helper/sessionStorageHelper.js";
+import LocalStorageHelper from "../helper/LocalStorageHelper.js";
 
 // personal information action types
-export const UPDATE_SEX = "UPDATE_SEX",
+export const
+  REFRESH_USERINFO = "REFRESH_USERINFO",
+  UPDATE_USERINFO = "UPDATE_USERINFO",
+  UPDATE_SEX = "UPDATE_SEX",
   UPDATE_CODEAPPLY = "UPDATE_CODEAPPLY",
   UPDATE_USERNAME = "UPDATE_USERNAME",
   UPDATE_USEREMAIL = "UPDATE_USEREMAIL",
   UPDATE_USERPHONE = "UPDATE_USERPHONE",
   UPDATE_VERIFICATIONCODE = "UPDATE_VERIFICATIONCODE";
+
+export const refreshUser = () => {
+  return {
+    type: REFRESH_USERINFO,
+  }
+}
+
+export const updateUser = (user) => {
+  /* 存储到LocalStorage */
+  LocalStorageHelper.save("userInfo", user);
+
+  return {
+    type: UPDATE_USERINFO,
+    user
+  }
+}
 
 export const updateUserSex = (sex) => {
   return {
@@ -58,8 +78,7 @@ export const
   UPDATE_SCHEDULE_DATE = "UPDATE_SCHEDULE_DATE",
   CLEAR_SCHEDULE_DATE = "CLEAR_SCHEDULE_DATE",
   UPDATE_SCHEDULE_TIME = "UPDATE_SCHEDULE_TIME",
-  CLEAR_SCHEDULE_TIME = "CLEAR_SCHEDULE_TIME",
-  INIT_SCHEDULE = "INIT_SCHEDULE";
+  CLEAR_SCHEDULE_TIME = "CLEAR_SCHEDULE_TIME";
 
 export const updateScheduleDate = (date) => {
   /* 存储到sessionStorage */
@@ -99,12 +118,6 @@ export const clearScheduleTime = () => {
   }
 }
 
-export const initSchedule = () => {
-  return {
-    type: INIT_SCHEDULE,
-  }
-}
-
 // store information action types
 export const
   UPDATE_STORE_INFO = "UPDATE_STORE_INFO",
@@ -132,8 +145,7 @@ export const clearStoreInfo = () => {
 // product infomation action types
 export const
   UPDATE_PRODUCT = "UPDATE_PRODUCT",
-  CLEAR_PRODUCT = "CLEAR_PRODUCT",
-  INIT_PRODUCT = "INIT_PRODUCT";
+  CLEAR_PRODUCT = "CLEAR_PRODUCT";
 
 export const updateProduct = (product) => {
   /* 存储到sessionStorage */
@@ -154,8 +166,28 @@ export const clearProduct = () => {
   }
 }
 
-export const initProduct = () => {
+// order information action types
+export const
+  UPDATE_CHOSED_ADDONS = "UPDATE_CHOSED_ADDONS",
+  DELETE_CHOSED_ADDONS = "DELETE_CHOSED_ADDONS",
+  CLEAR_CHOSED_ADDONS = "CLEAR_CHOSED_ADDONS";
+
+export const updateChosedAddons = (addon) => {
   return {
-    type: INIT_PRODUCT,
+    type: UPDATE_CHOSED_ADDONS,
+    addon
+  }
+}
+
+export const deleteChosedAddons = (addon) => {
+  return {
+    type: DELETE_CHOSED_ADDONS,
+    addon
+  }
+}
+
+export const clearChosedAddons = () => {
+  return {
+    type: CLEAR_CHOSED_ADDONS,
   }
 }

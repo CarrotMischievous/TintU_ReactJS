@@ -8,6 +8,7 @@ export const
           PAGE_SCHEDULE_DATE  = "/tintu/service/schedule/date",
           PAGE_SCHEDULE_TIME  = "/tintu/service/schedule/time",
           PAGE_ORDER_ADDON    = "/tintu/service/addons",
+          PAGE_ORDER_CONFIRM  = "/tintu/service/order/confirm",
       PAGE_SELF           = "/tintu/myself",
       PAGE_NOTIF          = "/tintu/notification",
       PAGE_ORDER          = "/tintu/orders";

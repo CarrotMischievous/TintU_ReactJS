@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { PAGE_SCHEDULE_DATE } from "../../routes/userRoutes.js";
-import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ProductBrief from "./ProductBrief.jsx";
 import ProductItems from "./ProductItems.jsx";
@@ -39,6 +38,11 @@ class ProductPage extends React.Component {
         ]
       });
     }
+
+    /* 配置storeEntry */
+    if (this.props.setStoreEntry) {
+      this.props.setStoreEntry();
+    }
   }
 
   componentWillMount() {
@@ -61,7 +65,6 @@ class ProductPage extends React.Component {
 
     return (
       <div className="service-detail-page flex-container page-frame">
-        <StoreEntry />
         <ProductBrief
           product={product}
           productStore={storeInfo.name}

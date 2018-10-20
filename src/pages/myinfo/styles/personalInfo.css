@@ -4,3 +4,11 @@
   flex-grow: 1;
   align-content: flex-start;
 }
+
+.person-infos-notice {
+  border-top: 1px solid #ddd;
+  width: 100%;
+  text-align: center;
+  padding: .5em;
+  color: #bbb;
+}

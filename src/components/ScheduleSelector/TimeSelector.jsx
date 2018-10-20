@@ -12,6 +12,7 @@ class TimeSelector extends React.Component {
         title={`时间段`}
         content={transMinsToTime(this.props.scheduledTime)}
         reselectRoute={PAGE_SCHEDULE_TIME}
+        reselectData={this.props.scheduledTime}
       />
     );
   }

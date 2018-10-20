@@ -88,15 +88,10 @@ class ScheduleTimePage extends React.Component {
 
     return (
       <ScheduleSamplePage
+        {...this.props}
         selectors={[
-          (<ProductSelector
-            key="product"
-            onSelectedItemNone={undefined}
-            onChangeSelectedItem={undefined} />),
-          (<DateSelector
-            key="date"
-            onSelectedItemNone={undefined}
-            onChangeSelectedItem={undefined} />),
+          (<ProductSelector key="product"/>),
+          (<DateSelector key="date" />),
         ]}
         popup={
           <ScheduleSurePopup

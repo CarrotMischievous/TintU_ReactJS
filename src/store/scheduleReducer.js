@@ -3,7 +3,6 @@ import {
   UPDATE_SCHEDULE_TIME,
   CLEAR_SCHEDULE_DATE,
   CLEAR_SCHEDULE_TIME,
-  INIT_SCHEDULE
 } from "./actions.js";
 import { fetchSessionJson } from "../helper/sessionStorageHelper.js";
 
@@ -44,8 +43,6 @@ export default function (state, action) {
         ...state,
         time: -1,
       };
-    case INIT_SCHEDULE:
-      return state;
     default:
       return state;
   }

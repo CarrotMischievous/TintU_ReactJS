@@ -1,0 +1,36 @@
+.order-brief {
+  padding-top: .5em;
+  border: 1px solid #60BDA2;
+  border-radius: 5px;
+}
+
+.orderbr-keyinfo {
+  position: relative;
+  padding-left: 1em;
+  margin: 0;
+  color: #FC8531;
+}
+
+.orderbr-status {
+  position: absolute;
+  right: 1em;
+  border-radius: 5px;
+  background-color: #bbb;
+  color: white;
+  padding: .1em .25em;
+}
+
+.orderbr-product-list {
+  display: inline-block;
+  color: #bbb;
+  margin: .5em;
+  margin-left: 0;
+}
+
+.orderbr-detail-button {
+  border-top: 1px solid #60BDA2;
+  margin: 0;
+  text-align: center;
+  background-color: #60BDA2;
+  color: white;
+}

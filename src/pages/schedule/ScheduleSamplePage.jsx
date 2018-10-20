@@ -1,5 +1,4 @@
 import React from "react";
-import StoreEntry from "../../components/Store/StoreEntry.jsx";
 import ScheduleSelector from "../../components/ScheduleSelector/ScheduleSelector.jsx";
 import "./styles/schedulepage.css";
 
@@ -7,11 +6,19 @@ const preCls = "schedule-page";
 
 export default function(ScheduleComponent) {
   return class ScheduleSamplePage extends React.Component {
+    constructor(props) {
+      super(props);
+
+      /* 配置storeEntry */
+      if (this.props.setStoreEntry) {
+        this.props.setStoreEntry();
+      }
+    }
+
     render() {
       return (
         <div className={`${preCls} page-frame`}>
           {this.props.popup}
-          <StoreEntry />
           <ScheduleSelector>
             {
               this.props.selectors.map((selector) => {
