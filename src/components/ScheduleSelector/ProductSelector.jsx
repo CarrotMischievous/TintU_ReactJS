@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { PAGE_SERVE } from "../../routes/userRoutes.js";
-import * as Actions from "../../store/actions.js";
 import BaseSelector from "./BaseSelector.jsx";
 
 class ProductSelector extends React.Component {
@@ -11,7 +10,7 @@ class ProductSelector extends React.Component {
     return (
       <BaseSelector
         title={`项目`}
-        content={product.productChName}
+        content={product.ch_name}
         reselectRoute={PAGE_SERVE}
         reselectData={this.props.product}
       />
@@ -26,12 +25,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearProductName: () => {
-      dispatch(Actions.clearProductName());
-    },
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductSelector);
+export default connect(mapStateToProps)(ProductSelector);

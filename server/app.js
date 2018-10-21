@@ -19,6 +19,7 @@ app.use("/static", express.static(path.join(__dirname, "../build/static")));
 // 跨越支持
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 

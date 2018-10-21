@@ -3,9 +3,7 @@ const table_user = new User();
 
 // 获取用户信息全量内容
 const get = (req, res) => {
-  const userId = req.params.userid;
-
-  table_user.search([userId], (err, data) => {
+  table_user.search([req.userIndex.idxName], [req.userIndex.index], (err, data) => {
     //console.log(req.url, data);
     if (err) {
       res.status(404).send({
@@ -24,10 +22,29 @@ const add = (req, res) => {
   res.status(200).send(req.params);
 }
 
-// 获取用户信息全量内容
+// 基于部分信息更新用户
 const update = (req, res) => {
-  console.log(req.param);
-  res.status(200);
+  const queryNames = [],
+        queryParams = [];
+
+  /* 遍历全部body数据 */
+  Object.getOwnPropertyNames(req.body).forEach((property) => {
+    queryNames.push(property);
+    queryParams.push(req.body[property]);
+  });
+
+  table_user.update(queryNames, [req.userIndex.idxName], 
+    [...queryParams, req.userIndex.index], (err, data) => {
+    //console.log(req.url, data);
+    if (err) {
+      res.status(404).send({
+        error: err.code,
+      });
+      return;
+    }
+
+    res.status(200).send(data);
+  });
 }
 
 // 获取用户信息全量内容

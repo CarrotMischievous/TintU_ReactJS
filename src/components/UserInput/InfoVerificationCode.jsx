@@ -26,6 +26,7 @@ class InfoVerificationCode extends React.Component {
     return (
       <div className="identity-code">
         <SimpleInfoTextInput
+          placeholder="4位数字"
           text={this.props.text}
           onTextChanged={this.handleVCodeChange.bind(this)}
           textCheck={this.verificationCodeCheck.bind(this)} />

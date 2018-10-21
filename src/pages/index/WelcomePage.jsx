@@ -32,7 +32,7 @@ class WelcomePage extends React.Component {
   /* 从Server获取数据通过redux刷新 */
   handleServerData = (user) => {
     if (this.props.updateUser) {
-      this.props.updateUser(user);
+      this.props.updateUser(user[0]);
     }
 
     /* 跳转到预订页面 */

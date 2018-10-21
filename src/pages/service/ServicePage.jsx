@@ -1,11 +1,13 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Toast } from 'antd-mobile';
 import * as Actions from "../../store/actions.js";
 import { PAGE_PRODUCT } from "../../routes/userRoutes.js";
 import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ServiceFrame from "../../components/ServiceItem/ServiceFrame.jsx";
+import ProductFetcher from "../../server/ProductFetcher.js";
 import "./styles/servicepage.css";
 
 class ServicePage extends React.Component {
@@ -28,23 +30,31 @@ class ServicePage extends React.Component {
     this.handleServiceItemSelected = this.handleServiceItemSelected.bind(this);
   }
 
-  componentWillUpdate() {
+  componentWillMount() {
     /* 页面刷新则product重选 */
     if (this.props.clearProduct) {
       this.props.clearProduct();
     }
   }
 
-  handleServiceItemSelected(productName) {
-    /* 通过redux刷新当前选择的product */
-    if (this.props.updateProduct) {
-      this.props.updateProduct({
-        productName,
-        productChName: "证件照",
-      });
-    }
+  handleServiceItemSelected(name) {
+    /* 根据productName获取product全量信息 */
+    ProductFetcher.fetchByName(name, (data) => {
+      /* 通过redux刷新当前选择的product */
+      if (this.props.updateProduct) {
+        this.props.updateProduct(data[0]);
+      }
 
-    routeTraverseWithDelay(this.props.history, PAGE_PRODUCT);
+      /* product更新，date不再有效 */
+      if (this.props.clearScheduleDate) {
+        this.props.clearScheduleDate();
+      }
+
+      routeTraverseWithDelay(this.props.history, PAGE_PRODUCT);
+    }, () => {
+      /* 产品信息不会找不到，直接提示网络错误 */
+      Toast.offline("服务器暂时无法连接", 2);
+    });
   }
 
   render() {
@@ -56,19 +66,19 @@ class ServicePage extends React.Component {
           itemList={
             [
               {
-                productName: "identification",
+                name: "identification",
                 title: "证件照",
               },
               {
-                productName: "portraits",
+                name: "portraits",
                 title: "形象照",
               },
               {
-                productName: "couple",
+                name: "couple",
                 title: "结婚登记照",
               },
               {
-                productName: "degree",
+                name: "degree",
                 title: "学位照",
               },
             ]
@@ -81,19 +91,19 @@ class ServicePage extends React.Component {
           itemList={
             [
               {
-                productName: "single",
+                name: "single",
                 title: "个人写真",
               },
               {
-                productName: "lovers",
+                name: "lovers",
                 title: "情侣写真",
               },
               {
-                productName: "2friends",
+                name: "2friends",
                 title: "好友写真",
               },
               {
-                productName: "class",
+                name: "class",
                 title: "班级毕业照",
               },
             ]
@@ -106,19 +116,19 @@ class ServicePage extends React.Component {
           itemList={
             [
               {
-                productName: "formal",
+                name: "formal",
                 title: "正装租赁",
               },
               {
-                productName: "academicals",
+                name: "academicals",
                 title: "学位服租赁",
               },
               {
-                productName: "studio",
+                name: "studio",
                 title: "影棚租赁",
               },
               {
-                productName: "equipment",
+                name: "equipment",
                 title: "器材租赁",
               },
             ]
@@ -131,19 +141,19 @@ class ServicePage extends React.Component {
           itemList={
             [
               {
-                productName: "filmU",
+                name: "filmU",
                 title: "FlimU系列",
               },
               {
-                productName: "follow",
+                name: "follow",
                 title: "活动跟拍",
               },
               {
-                productName: "videos",
+                name: "videos",
                 title: "视频制作",
               },
               {
-                productName: "flight",
+                name: "flight",
                 title: "航拍",
               },
             ]
@@ -157,11 +167,14 @@ class ServicePage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateProduct: (productName, productChName) => {
-      dispatch(Actions.updateProduct(productName, productChName));
+    updateProduct: (product) => {
+      dispatch(Actions.updateProduct(product));
     },
     clearProduct: () => {
       dispatch(Actions.clearProduct());
+    },
+    clearScheduleDate: () => {
+      dispatch(Actions.clearScheduleDate());
     },
   }
 }

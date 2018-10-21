@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Toast } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import UserFetcher from "../../server/UserFetcher.js";
 import PersonalInfo from "./PersonalInfo.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import * as Actions from "../../store/actions.js";
@@ -82,16 +83,18 @@ class MyInfoPage extends React.Component {
   }
 
   /* 当前用户满足要求，存到数据库 */
-  handleSaveUserInfo(waitToast) {
-    setTimeout(() => {
+  handleSaveUserInfo = () => {
+    UserFetcher.saveUserByPhoneWithVCode(this.props.userInfo.user, () => {
       /* 刷新LocalStorage */
       if (this.props.updateUser) {
         this.props.updateUser(this.props.userInfo.user);
       }
-
       Toast.hide();
       Toast.success("保存成功", 2);
-    }, 2000);
+    }, () => {
+      Toast.hide();
+      Toast.fail("保存失败", 2);
+    });
   }
 
   handleUserCancel() {

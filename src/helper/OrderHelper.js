@@ -13,11 +13,11 @@ export const generateOrderBySchedule = (user, products, schedule, storeInfo) =>{
 
   /* 所有选择产品的中文名字列表 */
   order.productList = products.map((product) => (
-    product.productChName
+    product.ch_name
   ));
   /* 所有产品总耗时 */
   order.takeTime = products.reduce((accumulator, product) => (
-    accumulator + product.spendTime
+    accumulator + product.spend_time
   ), 0);
   /* 所有产品总价值 */
   order.totalPrice = products.reduce((accumulator, product, index) => {

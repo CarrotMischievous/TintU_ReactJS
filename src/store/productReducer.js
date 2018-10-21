@@ -18,9 +18,6 @@ export default function (state, action) {
   /* 根据Type处理state */
   switch(action.type) {
     case UPDATE_PRODUCT:
-      action.product.price = 222;
-      action.product.discount = 40;
-      action.product.spendTime = 1;
       return action.product;
     case CLEAR_PRODUCT:
       return null;

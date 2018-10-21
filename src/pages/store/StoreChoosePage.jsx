@@ -6,6 +6,7 @@ import { PAGE_SERVE } from "../../routes/userRoutes.js";
 import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import StoreBrief from "./StoreBrief.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
+import StoreFetcher from "../../server/StoreFetcher.js";
 import "./styles/storechoosepage.css";
 
 const preCls = "store-choose-page";
@@ -13,6 +14,10 @@ const preCls = "store-choose-page";
 class StoreChoosePage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      stores: [],
+    }
 
     /* 通知Wrapper header的配置 */
     if (this.props.setHeaderConfiguration) {
@@ -30,6 +35,13 @@ class StoreChoosePage extends React.Component {
     }
 
     /* 从服务器获取当前地区所有门店信息 */
+    StoreFetcher.fetchStoresByDistrict("NKG", this.handleServerData);
+  }
+
+  handleServerData = (stores) => {
+    this.setState({
+      stores,
+    });
   }
 
   handleStoreSelected = (storeInfo) => {
@@ -45,17 +57,18 @@ class StoreChoosePage extends React.Component {
     return (
       <div className={`${preCls} page-frame`}>
         <p className={`${preCls}-title`}>请选择一个分店</p>
-        <StoreBrief
-          storeInfo={{
-            id: 1,
-            name: "南京玄武店",
-            address: "南京市鼓楼区中央路201号金茂汇6楼605",
-            phone: "18512542541",
-            email: "njtzl@gmail.com",
-            path: "南京轨道交通一号线玄武门站（1号出口）",
-          }}
-          onStoreSelected={this.handleStoreSelected}
-        />
+        {
+          this.state.stores.map((storeInfo, index) => {
+            return (
+              <StoreBrief
+                key={index}
+                storeInfo={storeInfo}
+                onStoreSelected={this.handleStoreSelected}
+              />
+            );
+          })
+        }
+        
       </div>
     );
   }

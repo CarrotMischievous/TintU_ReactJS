@@ -49,7 +49,11 @@ class OrderConfirmPage extends React.Component {
     /* Toast延时 */
     const noticeDelay = 1;
 
-    Toast.success("支付成功", noticeDelay, this.handleOrderPaySuccess);
+    Toast.loading(`正在支付...`, 0);
+    setTimeout(() => {
+      Toast.hide();
+      Toast.success("支付成功", noticeDelay, this.handleOrderPaySuccess);
+    }, 2000);
   }
 
   handleBackToPreStep = () => {

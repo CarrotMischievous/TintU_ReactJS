@@ -99,7 +99,7 @@ class ProductPage extends React.Component {
             {
               title: "预计耗时",
               style: STYLES.TIME,
-              time: "3",
+              time: product.spend_time * 0.5,
               unit: "小时",
             },
             {

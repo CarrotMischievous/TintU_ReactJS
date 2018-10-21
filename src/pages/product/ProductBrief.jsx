@@ -21,13 +21,13 @@ class ProductBrief extends React.Component {
             borderColor: backgroundColor,
           }}>
           <div className={`${preCls}-img-wrapper`}>
-            <img src={srcProductImage(product.productName)} alt="product" />
+            <img src={srcProductImage(product.name)} alt="product" />
           </div>
-          <span>{product.productChName}</span>
+          <span>{product.ch_name}</span>
         </div>
         <div className={`${mainPreCls}-icon-frame brief`}>
           <Icon type="check-circle" size="xxs" />
-          <span>{`￥${product.productPrice}`}</span>
+          <span>{`￥${product.price}`}</span>
         </div>
         <div className={`${mainPreCls}-icon-frame brief`}>
           <Icon type="check-circle" size="xxs" />

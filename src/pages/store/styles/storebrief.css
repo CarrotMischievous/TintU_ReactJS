@@ -1,6 +1,7 @@
 .store-brief {
   position: relative;
   padding: 1em;
+  margin-bottom: .5em;
   border-radius: 5px;
   border: 1px solid #FC8531;
   text-align: center;

@@ -28,6 +28,7 @@ export default function (state, action) {
     };
 
     state = userInfo;
+    //console.log(state);
   }
 
   // 根据Type处理state

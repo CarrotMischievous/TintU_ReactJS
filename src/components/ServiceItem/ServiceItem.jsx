@@ -10,7 +10,7 @@ const imgSrc = (productName) => {
 class ServiceItem extends React.Component {
   handleChooseServiceItem() {
     if (this.props.onSelected) {
-      this.props.onSelected(this.props.productName);
+      this.props.onSelected(this.props.name);
     }
   }
 
@@ -21,7 +21,7 @@ class ServiceItem extends React.Component {
         style={this.props.style}
         onTouchEnd={this.handleChooseServiceItem.bind(this)}>
         <div className="ser-item-imgframe">
-          <img className="ser-item-img" src={imgSrc(this.props.productName)} alt="service" />
+          <img className="ser-item-img" src={imgSrc(this.props.name)} alt="service" />
         </div>
         <span className="ser-item-title">{this.props.title}</span>
       </DivButton>
@@ -30,7 +30,7 @@ class ServiceItem extends React.Component {
 }
 
 ServiceItem.propTypes = {
-  productName: PropTypes.string,
+  name: PropTypes.string,
   title: PropTypes.string,
   style: PropTypes.object,
   onSelected: PropTypes.func,

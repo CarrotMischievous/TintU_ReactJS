@@ -29,7 +29,7 @@ class ServiceFrame extends React.Component {
               <ServiceItem
                 key={index}
                 style={this.parseItemStyle(frameStyle, item.style)}
-                productName={item.productName}
+                name={item.name}
                 title={item.title}
                 onSelected={this.props.onServiceItemSelected}
               />

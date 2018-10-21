@@ -1,5 +1,6 @@
 const mysql  = require('mysql');
 const dbDebug = require("debug")("table_user");
+const Formater = require("../helper/format.js");
 
 const connection = mysql.createConnection({
   host    : '127.0.0.1',
@@ -19,17 +20,16 @@ class User {
   }
 
   add(queryParam, resCallBack) {
-    const addQuery = "INSERT INTO user(name, sex, age, phone) VALUES(?, ?, ?, ?);";
+    const addQuery = "INSERT INTO user(name, sex, age, phone, email) VALUES(?, ?, ?, ?, ?);";
     connection.query(addQuery, queryParam, resCallBack);
   }
 
-  update(paramList, queryParam, resCallBack) {
+  update(dataParamList, keyParamList, queryParam, resCallBack) {
     // update可以针对部分值，这里解析下参数
-    const props = paramList.map((param) => {
-      return `${param} = ?,`;
-    });
-    const params = props.join(" ");
-    const updateQuery = `UPDATE user ${params} WHERE phone = ?`;
+    const dataParams = Formater.formatParams(dataParamList);
+    const keyParams = Formater.formatParams(keyParamList);
+
+    const updateQuery = `UPDATE user SET ${dataParams} WHERE ${keyParams};`;
 
     connection.query(updateQuery, queryParam, resCallBack);
   }
@@ -39,8 +39,9 @@ class User {
     connection.query(deleteQuery, queryParam, resCallBack);
   }
 
-  search(queryParam, resCallBack) {
-    const searchQuery = "SELECT * FROM user WHERE phone = ?;";
+  search(paramList, queryParam, resCallBack) {
+    const params = Formater.formatParams(paramList);
+    const searchQuery = `SELECT * FROM user WHERE ${params};`;
     connection.query(searchQuery, queryParam, resCallBack);
   }
 

@@ -48,6 +48,11 @@ class ScheduleTimePage extends React.Component {
   }
 
   componentWillMount() {
+    /* 清空已选择时间 */
+    if (this.props.clearScheduleTime) {
+      this.props.clearScheduleTime();
+    }
+
     /* 计算工作日一天的时间点 */
     const timeFragments = calcAllDayTimeFragment(WORK_START_TIME, WORK_HOUR, 30);
     //console.log(timeFragments);

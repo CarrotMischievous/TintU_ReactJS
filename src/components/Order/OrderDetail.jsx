@@ -45,7 +45,7 @@ class OrderDetail extends React.Component {
             <InfoBlock
               title="预计耗时"
               items={[
-                `约${order.takeTime}小时`,
+                `约${order.takeTime * .5}小时`,
               ]}
               explain="时长仅供参考，请预留充足时间"
             />

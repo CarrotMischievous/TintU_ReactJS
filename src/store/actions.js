@@ -136,7 +136,7 @@ export const updateStoreInfo = (storeInfo) => {
 export const clearStoreInfo = () => {
   /* 删除sessionStorage */
   removeSessionData("storeInfo");
-  
+
   return {
     type: CLEAR_STORE_INFO,
   }
