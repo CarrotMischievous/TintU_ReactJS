@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Toast } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import UserFetcher from "../../server/UserFetcher.js";
+import UserFetcher from "../../helper/server/UserFetcher.js";
 import PersonalInfo from "./PersonalInfo.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import * as Actions from "../../store/actions.js";

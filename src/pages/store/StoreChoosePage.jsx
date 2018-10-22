@@ -6,7 +6,7 @@ import { PAGE_SERVE } from "../../routes/userRoutes.js";
 import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import StoreBrief from "./StoreBrief.jsx";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
-import StoreFetcher from "../../server/StoreFetcher.js";
+import StoreFetcher from "../../helper/server/StoreFetcher.js";
 import "./styles/storechoosepage.css";
 
 const preCls = "store-choose-page";

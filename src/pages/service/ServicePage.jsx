@@ -7,7 +7,7 @@ import { PAGE_PRODUCT } from "../../routes/userRoutes.js";
 import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import AppWrapper from "../../components/AppWrapper/AppWrapper.jsx";
 import ServiceFrame from "../../components/ServiceItem/ServiceFrame.jsx";
-import ProductFetcher from "../../server/ProductFetcher.js";
+import ProductFetcher from "../../helper/server/ProductFetcher.js";
 import "./styles/servicepage.css";
 
 class ServicePage extends React.Component {

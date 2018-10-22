@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Toast } from 'antd-mobile';
-import UserFetcher from "../../server/UserFetcher.js";
+import UserFetcher from "../../helper/server/UserFetcher.js";
 import { PAGE_STORE_CHOOSE, PAGE_SELF } from "../../routes/userRoutes.js";
 import { routeTraverseWithDelay } from "../../helper/RouteHelper.js";
 import Introduction from "./Introduction.jsx";

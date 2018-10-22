@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
-import UserFetcher from "../../server/UserFetcher.js";
+import UserFetcher from "../../helper/server/UserFetcher.js";
 import InfoTextInput from "../../components/UserInput/InfoTextInput.jsx";
 import InfoTelephone from "../../components/UserInput/InfoTelephone.jsx";
 import InfoCheckBox from "../../components/UserInput/InfoCheckBox.jsx";
