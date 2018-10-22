@@ -2,7 +2,7 @@ import {
   UPDATE_PRODUCT,
   CLEAR_PRODUCT
 } from "./actions.js";
-import { fetchSessionJson } from "../helper/sessionStorageHelper.js";
+import { fetchSessionJson } from "../helper/SessionStorageHelper.js";
 
 /* 这里state是主state的一项属性 */
 export default function (state, action) {

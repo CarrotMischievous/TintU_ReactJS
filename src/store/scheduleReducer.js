@@ -4,7 +4,7 @@ import {
   CLEAR_SCHEDULE_DATE,
   CLEAR_SCHEDULE_TIME,
 } from "./actions.js";
-import { fetchSessionJson } from "../helper/sessionStorageHelper.js";
+import { fetchSessionJson } from "../helper/SessionStorageHelper.js";
 
 // 这里state是主state的一项属性
 export default function (state, action) {

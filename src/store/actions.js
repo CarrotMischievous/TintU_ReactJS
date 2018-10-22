@@ -1,7 +1,7 @@
 import {
   removeSessionData,
   saveSessionAsJson
-} from "../helper/sessionStorageHelper.js";
+} from "../helper/SessionStorageHelper.js";
 import LocalStorageHelper from "../helper/LocalStorageHelper.js";
 
 // personal information action types
