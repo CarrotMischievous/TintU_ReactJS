@@ -4,6 +4,9 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
+// 杂乱文件清理和html/bundleJS自动关联
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -54,5 +57,18 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     /* module闭包优化 */
     new webpack.optimize.ModuleConcatenationPlugin(),
+
+    /* 打包清理一次 */
+    new CleanWebpackPlugin(["build"], {
+      verbose: true,
+      dry: false
+    }),
+
+    /* 刷新index html */
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: resolveApp('src/index.html'),
+      filename: resolveApp('build/index.html'),
+    }),
   ]
 });
