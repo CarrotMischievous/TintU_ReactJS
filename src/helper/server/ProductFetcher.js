@@ -1,6 +1,6 @@
-import { tintuFetch } from "./TintuFetch.js";
+import { tintuFetch, TINT_SERVER } from "./TintuFetch.js";
 
-const productBaseUrl = "http://192.168.0.176:9001/product";
+const productBaseUrl = `${TINT_SERVER}/product`;
 
 /* 从数据库读取Product信息 */
 const fetchByName = (name, resolvedCallback, rejectedCallback) => {

@@ -1,6 +1,6 @@
-import { tintuFetch } from "./TintuFetch.js";
+import { tintuFetch, TINT_SERVER } from "./TintuFetch.js";
 
-const storeBaseUrl = "http://192.168.0.176:9001/store";
+const storeBaseUrl = `${TINT_SERVER}/store`;
 
 /* 从数据库读取地区所有店面 */
 const fetchStoresByDistrict = (district, resolvedCallback, rejectedCallback) => {

@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
 
+const TINT_SERVER = "http://45.32.71.240:8081";
+
 /* 自定义GET */
 function tintuFetch(url, resolvedCallback, rejectedCallback) {
   return fetch(url, {
@@ -65,6 +67,7 @@ function tintuPost(url, reqBody, resolvedCallback, rejectedCallback) {
 }
 
 module.exports = {
+  TINT_SERVER,
   tintuFetch,
   tintuPost,
 }

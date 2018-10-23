@@ -1,6 +1,6 @@
-import { tintuFetch, tintuPost } from "./TintuFetch.js";
+import { tintuFetch, tintuPost, TINT_SERVER } from "./TintuFetch.js";
 
-const userInfoBaseUrl = "http://192.168.0.176:9001/user";
+const userInfoBaseUrl = `${TINT_SERVER}/user`;
 
 /* 从数据库读取UserInfo */
 const fetchByPhone = (userPhone, resolvedCallback, rejectedCallback) => {
